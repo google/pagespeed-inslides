@@ -1,0 +1,283 @@
+extends slides
+
+block variables
+  - const favicon = 'https://www.google.com/images/icons/product/pagespeed-64.png';
+  - const title = `${t('presentationTitle')} <br> ${insights.finalUrl}`;
+  - const subtitle = `<img src='http://www.google.com/s2/favicons?domain_url=${encodeURIComponent(insights.finalUrl)}'> ${insights.title}`;
+  - const date = new Intl.DateTimeFormat(language, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}).format(new Date());
+block slides
+  style
+    include style.css
+    include prism-coy.css
+  slide.title-slide.segue.fill.nobackground(style='background-image: url(./images/datacenter' + (Math.floor(Math.random() * 12) + 1) + '.jpg)')
+    aside.gdbar
+      img(src='images/google.svg')
+    hgroup(style='background:black; opacity:0.75; width:100%; padding:.5em 1em;')
+      h1.white(data-config-title='')
+      h2.white(data-config-subtitle='')
+      p
+        img.user-profile-image
+        span.user-display-name
+  script.
+    // Current user JSONP callback
+    function _showCurrentUser(currentUser) {
+      if (currentUser.status !== 'Success') {
+        return;
+      }
+      const email = currentUser.message.replace(/.*?id (\w+@google.com).*?/g, '$1');
+      const profile = currentUser.user_profile;
+      const displayName = profile.displayName;
+      const profileImage = profile.image.url;
+      document.querySelector('.user-display-name').textContent = `${displayName} (${email}) — #{date}`;
+      document.querySelector('.user-profile-image').src = profileImage;
+    }
+  script(src='https://script.google.com/a/macros/google.com/s/AKfycbykI7lRcoqqpca9ODU9B31d5W3Xyxll-Z-gM2x_l3JntrcoTKg/exec?callback=_showCurrentUser')
+  script(src='https://www.gstatic.com/charts/loader.js')
+  - const link = `<a href='${insights.finalUrl}'>${URL.parse(insights.finalUrl).hostname}</a>`;
+  if insights.screenshot
+    slide
+      hgroup
+        h2 #{t('screenshot')}
+      article.flexbox.vcenter.screenshot(style='background-image: url(data:' + insights.screenshot.mimeType + ';base64,' + insights.screenshot.data + '); background-repeat: no-repeat; background-size: contain; background-position: center;')
+      footer.source.black !{t('source', {link: link, interpolation: {escape: false}})}
+  slide
+    hgroup
+      h2 #{t('requestStatistics')}
+    article
+      - const totalRequestBytes = filesize(insights.pageStats.totalRequestBytes);
+      p !{t('requestStatisticsNarrative', {numberResources: insights.pageStats.numberResources, numberHosts: insights.pageStats.numberHosts, totalRequestBytes: totalRequestBytes, interpolation: {escape: false}})}
+      #requestBreakDown.chart
+    footer.source.black !{t('source', {link: link, interpolation: {escape: false}})}
+  slide
+    hgroup
+      h2 #{t('responseStatistics')}
+    article
+      - const totalSize = filesize(insights.pageStats.orderedResponseBytes.reduce(function(prev, curr) {
+      -   return {weight: prev.weight + curr.weight};
+      - }, {weight: 0}).weight);
+      p !{t('responseStatisticsNarrative', {totalSize: totalSize, interpolation: {escape: false}})}
+      #responseBreakDown.chart
+    footer.source.black !{t('source', {link: link, interpolation: {escape: false}})}
+    - for (let item in insights.pageStats.orderedResponseBytes) {
+    -   insights.pageStats.orderedResponseBytes[item].human = filesize(insights.pageStats.orderedResponseBytes[item].weight);
+    - }
+    -
+
+    script.
+      const pageStats = !{JSON.stringify(insights.pageStats)};
+      const labelLookUp = {
+        htmlResponseBytes: '#{t('htmlResponseBytes')}',
+        textResponseBytes: '#{t('textResponseBytes')}',
+        cssResponseBytes: '#{t('cssResponseBytes')}',
+        imageResponseBytes: '#{t('imageResponseBytes')}',
+        javascriptResponseBytes: '#{t('javascriptResponseBytes')}',
+        flashResponseBytes: '#{t('flashResponseBytes')}',
+        otherResponseBytes: '#{t('otherResponseBytes')}',
+        numberStaticResources: '#{t('numberStaticResources')}',
+        numberJsResources: '#{t('numberJsResources')}',
+        numberCssResources: '#{t('numberCssResources')}',
+      };
+      google.charts.load('current', {'packages': ['corechart']});
+      google.charts.setOnLoadCallback(drawCharts);
+
+      /**
+       * Draws the charts and resizes them to optimal size
+       */
+      function drawCharts() {
+        const options = {
+          pieSliceText: 'value',
+          pieResidueSliceLabel: '#{t('other')}',
+          backgroundColor: 'transparent',
+          sliceVisibilityThreshold: 0.05,
+          legend: {position: 'labeled'}
+        };
+        {
+          // Resources break-down
+          let dataTable = [['resource', 'weight']];
+          for (let item in pageStats.orderedNumberResources) {
+            const resource = pageStats.orderedNumberResources[item];
+            dataTable.push([labelLookUp[resource.name], resource.weight]);
+          }
+          const data = google.visualization.arrayToDataTable(dataTable);
+          const chart = new google.visualization.PieChart(document.getElementById('requestBreakDown'));
+          chart.draw(data, options);
+        }
+        {
+          // Size break-down
+          let dataTable = [['resource', 'weight']];
+          for (let item in pageStats.orderedResponseBytes) {
+            const resource = pageStats.orderedResponseBytes[item];
+            dataTable.push([labelLookUp[resource.name], {v: resource.weight, f: resource.human}]);
+          }
+          const data = google.visualization.arrayToDataTable(dataTable);
+          const chart = new google.visualization.PieChart(document.getElementById('responseBreakDown'));
+          chart.draw(data, options);
+        }
+      }
+
+      /**
+       * Makes sure slides never overflow
+       */
+      function sizeSlideElements() {
+        try {
+          const slide = document.querySelector('slide.current');
+          if (!slide) {
+            return;
+          }
+          const slideHeight = slide.clientHeight;
+          const hgroup = slide.querySelector('hgroup');
+          if (!hgroup) {
+            return;
+          }
+          const hgroupHeight = hgroup.clientHeight;
+          const article = slide.querySelector('article');
+          if (!article) {
+            return;
+          }
+          const articleHeight = (slideHeight - hgroupHeight - 2 * 40 - 1.5 * 45);
+          article.style.height = articleHeight + 'px';
+          const uls = article.querySelectorAll('ul');
+          if (!uls) {
+            return;
+          }
+          const lenUls = uls.length;
+          let allUlsOffsetHeights = 0;
+          let allUlsResizedHeights = 0;
+          for (const ul of uls) {
+            allUlsOffsetHeights += ul.offsetHeight;
+            allUlsResizedHeights += ((articleHeight -
+                (ul.offsetTop - article.offsetTop)) / lenUls);
+          }
+          if (allUlsOffsetHeights > allUlsResizedHeights) {
+            for (const ul of uls) {
+              ul.style.height = ((articleHeight -
+                (ul.offsetTop - article.offsetTop)) / lenUls) + 'px';
+            }
+          }
+        } catch (e) {
+          // Fail silently
+        }
+      }
+
+      function addImagePreviews() {
+        const images = document.querySelectorAll('li a[data-content-type^="image/"]');
+        const stylesheet = document.createElement('style');
+        document.head.appendChild(stylesheet);
+        for (let i = 0, lenI = images.length; i < lenI; i++) {
+          const image = images[i];
+          const randomId = 'image-' + Math.random().toString().substr(2);
+          image.classList.add(randomId);
+          stylesheet.sheet.insertRule('.' + randomId + '::after { content: ""; background: url(' + image.href + ') no-repeat 50% 50%/contain, linear-gradient(45deg, #CBCBCB 25%, transparent 25%, transparent 75%, #CBCBCB 75%, #CBCBCB) repeat 0 0/15px 15px, linear-gradient(45deg, #CBCBCB 25%, transparent 25%, transparent 75%, #CBCBCB 75%, #CBCBCB) repeat 7.5px 7.5px/15px 15px; }', 0);
+        }
+      }
+
+      function addCodePreview(elem) {
+        // Don't fire on nodes without code, and only fire once
+        if (!elem.dataset.codeId || elem.querySelector('.code-preview')) {
+          return;
+        }
+        const container = elem.querySelector('div');
+        const pre = document.createElement('pre');
+        const code = document.createElement('code');
+        pre.appendChild(code);
+        container.appendChild(pre);
+        container.classList.add('code-preview');
+        const content = document.querySelector('#' + elem.dataset.codeId).content;
+        const nodeIterator = document.createNodeIterator(
+            content,
+            NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT,
+            null,
+            false);
+        const fragment = document.createDocumentFragment();
+        let nodeCounter = 0;
+        const NODE_LIMIT = 1000;
+        let currentNode;
+        while(nodeCounter <= NODE_LIMIT && (currentNode = nodeIterator.nextNode())) {
+          fragment.appendChild(currentNode);
+          nodeCounter++;
+        }
+        code.appendChild(fragment);
+      }
+
+      window.addEventListener('resize', drawCharts);
+      window.addEventListener('click', drawCharts);
+      window.addEventListener('keydown', drawCharts);
+      window.addEventListener('resize', sizeSlideElements);
+      window.addEventListener('click', sizeSlideElements);
+      window.addEventListener('keydown', sizeSlideElements);
+      window.addEventListener('DOMContentLoaded', sizeSlideElements);
+      window.addEventListener('DOMContentLoaded', addImagePreviews);
+
+  each group, groupName in insights.orderedRules
+    if group.length > 0
+      slide.title-slide.segue.fill.nobackground(style='background-image: url(./images/datacenter' + (Math.floor(Math.random() * 12) + 1) + '.jpg)')
+        aside.gdbar
+          img(src='images/google.svg')
+        hgroup(style='background:black; opacity:0.75; width:100%; padding:.5em 1em;')
+          h1.white #{t(groupName)}
+      each rule in group
+        slide
+          hgroup
+            h2 #{rule.localizedRuleName}
+          article
+            if rule.html
+              p !{rule.html}
+            if rule.urlBlocks.length > 0
+              each urlBlock in rule.urlBlocks
+                div
+                  p !{urlBlock.html}
+                  if urlBlock.urls.length > 0
+                    ul
+                      each urlHtml, index in urlBlock.urls
+                        - const match = urlHtml.html.match(/>(.*?)<\/a>/);
+                        - const url = match ? match[1] : '';
+                        - const contentType = url && insights.resourceTypes[url] ? insights.resourceTypes[url].type : '';
+                        - urlHtml.html = urlHtml.html.replace(/title=/, 'data-content-type="' + contentType + '" title=');
+                        - let codeId = '';
+                        - if (/(?:text\/css|javascript|text\/html)/.test(contentType)) {
+                        -   let lang;
+                        -   codeId = 'code-' + Math.random().toString().substr(2);
+                        -   if (/javascript/.test(contentType)) {
+                        -     lang = 'javascript';
+                        -   } else if (/text\/html/.test(contentType)) {
+                        -     lang = 'html';
+                        -   } else if (/text\/css/.test(contentType)) {
+                        -     lang = 'css';
+                        -   }
+                        -   const code = insights.resourceTypes[url].beautified;
+                        -   urlHtml.html += '<template id="' + codeId + '">' + code + '</template>';
+                        - }
+                        if /(?:text\/css|javascript|text\/html)/.test(contentType)
+                          li(data-code-id=codeId, onmouseover="addCodePreview(this);")
+                            details
+                              summary !{urlHtml.html}
+                              div
+                            if (index === 0)
+                              script.
+                                addCodePreview(document.querySelector('li[data-code-id="#{codeId}"]'));
+                        else if /(?:font)/.test(contentType)
+                          li
+                            - const randomId = 'font-' + Math.random().toString().substr(2);
+                            style.
+                              @font-face {
+                                font-family: #{randomId};
+                                src: url("#{url}");
+                              }
+                            details
+                              summary !{urlHtml.html}
+                              div.font-preview(style='font-family:' + randomId) The quick brown fox jumps over the lazy dog.
+                        else if /(?:image\/)/.test(contentType)
+                          li
+                            details
+                              summary !{urlHtml.html}
+                              img.image-preview(src=url)
+                        else
+                          li !{urlHtml.html}
+  slide.title-slide.segue.fill.nobackground(style='background-image: url(./images/datacenter' + (Math.floor(Math.random() * 12) + 1) + '.jpg)')
+    aside.gdbar
+      img(src='images/google.svg')
+    hgroup(style='background:black; opacity:0.75; width:100%; padding:.5em 1em;')
+      h1.white #{t('thankYou')}
+      h2.white(data-config-subtitle='')
+      p.white(data-config-presenter='')
+  slide.backdrop

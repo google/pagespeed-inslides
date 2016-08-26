@@ -1,0 +1,214 @@
+slides.layout-widescreen > slide {
+  width: 95vw;
+  height: calc(95vw / (1100 / 700));
+  margin-left: calc(95vw / -2);
+  margin-top: calc(95vw / (1100 / 700) / -2);
+}
+
+slides > slide {
+  width: 95vw;
+  height: calc(95vw / (900/700));
+  max-height: 95vh;
+  margin-left: calc(95vw / -2);
+  margin-top: calc(95vw / (900 / 700) / -2);
+}
+
+article {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+aside.gdbar {
+  width: 400px;
+  height: 150px;
+  opacity: 0.85;
+}
+
+.gdbar img {
+  width: 90% !important;
+  height: auto !important;
+  margin: 15px 15px !important;
+}
+
+.screenshot {
+  background-color: #eee;
+  display: block;
+}
+
+.chart {
+  width: 100%;
+  height: 70%;
+}
+
+.highlight {
+  opacity: 0.5;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.primary {
+  background-color: red;
+}
+
+.secondary {
+  background-color: green;
+}
+
+.title-slide hgroup h2 {
+  padding-left: .25em;
+}
+
+.user-display-name {
+
+}
+
+.user-profile-image {
+  width: 1.6em;
+  height: auto;
+  border-radius: .8em;
+  vertical-align: middle;
+  margin-right: .5em;
+}
+
+article p {
+  font-style: italic;
+}
+
+em {
+  color: darkblue;
+}
+
+ul {
+  margin-left: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+li {
+  line-height: 1.2;
+}
+
+a:link {
+  text-decoration: none;
+  border: none;
+}
+
+li a {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 30em;
+  white-space: nowrap;
+  line-height: 1.2;
+  vertical-align: bottom;
+}
+
+pre.prettyprint {
+  width: 100%;
+}
+
+.code-preview > pre {
+  border: solid 1px #ccc;
+  width: 100%;
+  height: 10em;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: transparent;
+  background-image: linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
+  background-size: 3em 3em;
+  background-origin: content-box;
+}
+
+.font-preview {
+  border: solid 1px #ccc;
+  padding: .5em;
+}
+
+.image-preview {
+  width: auto;
+  height: 200px;
+  border: solid 1px #ccc;
+  background-color: #FEFEFE;
+  background-image: linear-gradient(45deg, #CBCBCB 25%, transparent 25%, transparent 75%, #CBCBCB 75%, #CBCBCB), linear-gradient(45deg, #CBCBCB 25%, transparent 25%, transparent 75%, #CBCBCB 75%, #CBCBCB);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+li a::before {
+  content: "📄 Document";
+  color: darkgray;
+  margin:.2em;
+}
+
+li a[href*='.woff']::before,
+li a[href*='.woff2']::before,
+li a[href*='.ttf']::before,
+li a[data-content-type*='font']::before {
+  content: "🔡 Web Font";
+}
+
+li a[href$='.js']::before,
+li a[href*='.js?']::before,
+li a[data-content-type*='javascript']::before {
+  content: "📃 Script";
+}
+
+/* CSS */
+li a[href$='.css']::before,
+li a[data-content-type*='text/css']::before {
+  content: "📝 Style";
+}
+
+/* Images */
+li a[href$='.png']::before,
+li a[href$='.jpg']::before,
+li a[href$='.jpeg']::before,
+li a[href$='.webp']::before,
+li a[href$='.gif']::before,
+li a[data-content-type*='image/']::before {
+  content: "🖼 Image";
+}
+
+/* Vector Graphics */
+li a[href$='.svg']::before,
+li a[data-content-type*='image/svg']::before {
+  content: "📐 Vector Drawing";
+}
+
+/* Image-like hover preview */
+li a[href$='.png']:hover::after,
+li a[href$='.jpg']:hover::after,
+li a[href$='.jpeg']:hover::after,
+li a[href$='.webp']:hover::after,
+li a[href$='.gif']:hover::after,
+li a[href$='.svg']:hover::after,
+li a[data-content-type*='image/']:hover::after {
+  content: "";
+  position: absolute;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  left: 0;
+  width: 100px;
+  height: 100px;
+  padding: 1px;
+  border: solid 1px #ccc;
+  background-color: white;
+}
+
+/* Videos */
+li a[href$='.mp4']::before,
+li a[href$='.webm']::before,
+li a[href$='.mp4']::before,
+li a[href$='.ogv']::before,
+li a[data-content-type*='video/']::before {
+  content: "🎞 Video";
+}
+
+/* Captions */
+li a[href$='.vtt']::before,
+li a[href$='.webvtt']::before,
+li a[href$='.srt']::before,
+li a[data-content-type*='/vtt']::before,
+li a[data-content-type*='/ttml']::before {
+  content: "💬 Captions";
+}

@@ -1,0 +1,36 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes')
+    title PageSpeed InSlides—#{insights.title}
+  body
+    h1
+      a(href=insights.finalUrl) #{insights.title}
+    section
+      ul
+        if insights.scores.speed
+          li Speed Score: #{insights.scores.speed}
+        if insights.scores.usability
+          li Usability Score: #{insights.scores.usability}
+      if insights.screenshot
+        img(src='data:' + insights.screenshot.mimeType + ';base64,' + insights.screenshot.data)
+    each group, groupName in insights.orderedRules
+      section
+        if group.length > 0
+          h2 #{groupName.substr(0, 1).toUpperCase() + groupName.substr(1)}
+          ul
+            each rule in group
+              li
+                h3 #{rule.localizedRuleName}
+                if rule.html
+                  p !{rule.html}
+                if rule.urlBlocks.length > 0
+                  ul
+                    each urlBlock in rule.urlBlocks
+                      li
+                        p !{urlBlock.html}
+                        if urlBlock.urls.length > 0
+                          ul
+                            each url in urlBlock.urls
+                              li !{url.html}

@@ -1,0 +1,225 @@
+{
+  "ar": {
+    "translation": {
+    }
+  },
+  "bg": {
+    "translation": {
+    }
+  },
+  "ca": {
+    "translation": {
+    }
+  },
+  "zh-TW": {
+    "translation": {
+    }
+  },
+  "zh-CN": {
+    "translation": {
+    }
+  },
+  "hr": {
+    "translation": {
+    }
+  },
+  "cs": {
+    "translation": {
+    }
+  },
+  "da": {
+    "translation": {
+    }
+  },
+  "nl": {
+    "translation": {
+    }
+  },
+  "en": {
+    "translation": {
+      "presentationTitle": "PageSpeed InSlides Results",
+      "screenshot": "Screenshot",
+      "source": "Source: {{link}}",
+      "requestStatistics": "Request Statistics",
+      "requestStatisticsNarrative": "The page contains <em>{{numberResources}} resources</em> from <em>{{numberHosts}} unique hosts</em> weighing in at <em>{{totalRequestBytes}} total request bytes</em>.",
+      "responseStatistics": "Response Statistics",
+      "responseStatisticsNarrative": "The download size for all resources of the page was <em>{{totalSize}}</em>.",
+      "other": "Other",
+      "htmlResponseBytes": "HTML",
+      "textResponseBytes": "Text",
+      "cssResponseBytes": "Cascading Style Sheets",
+      "imageResponseBytes": "Images",
+      "javascriptResponseBytes": "JavaScript",
+      "flashResponseBytes": "Flash",
+      "otherResponseBytes": "Other",
+      "numberStaticResources": "Static Contents",
+      "numberJsResources": "JavaScript",
+      "numberCssResources": "Cascading Style Sheets",
+      "speed": "Speed",
+      "usability": "Usability",
+      "thankYou": "Thank you!"
+    }
+  },
+  "en-GB": {
+    "translation": {
+    }
+  },
+  "fil": {
+    "translation": {
+    }
+  },
+  "fi": {
+    "translation": {
+    }
+  },
+  "fr": {
+    "translation": {
+    }
+  },
+  "de": {
+    "translation": {
+      "presentationTitle": "PageSpeed InSlides Ergebnisse",
+      "screenshot": "Screenshot",
+      "source": "Quelle: {{link}}",
+      "requestStatistics": "Request-Statistiken",
+      "requestStatisticsNarrative": "Die Seite enthält <em>{{numberResources}} Ressourcen</em> von <em>{{numberHosts}} eindeutigen Hosts</em>, resultierend in <em>{{totalRequestBytes}} Request-Bytes insgesamt</em>.",
+      "responseStatistics": "Response-Statistiken",
+      "responseStatisticsNarrative": "Der insgesamte Download-Umfang der Seite ist <em>{{totalSize}}</em>.",
+      "other": "Sonstiges",
+      "htmlResponseBytes": "HTML",
+      "textResponseBytes": "Text",
+      "cssResponseBytes": "Cascading Style Sheets",
+      "imageResponseBytes": "Bilder",
+      "javascriptResponseBytes": "JavaScript",
+      "flashResponseBytes": "Flash",
+      "otherResponseBytes": "Andere Inhalte",
+      "numberStaticResources": "Statische Inhalte",
+      "numberJsResources": "JavaScript",
+      "numberCssResources": "Cascading Style Sheets",
+      "speed": "Geschwindigkeit",
+      "usability": "Benutzerfreundlichkeit",
+      "thankYou": "Vielen Dank!"
+    }
+  },
+  "el": {
+    "translation": {
+    }
+  },
+  "iw": {
+    "translation": {
+    }
+  },
+  "hi": {
+    "translation": {
+    }
+  },
+  "hu": {
+    "translation": {
+    }
+  },
+  "id": {
+    "translation": {
+    }
+  },
+  "it": {
+    "translation": {
+      "presentationTitle": "Risultati della PageSpeed InSlides",
+      "screenshot": "Screenshot",
+      "source": "Fonte: {{link}}",
+      "requestStatistics": "Sintesi delle Richieste",
+      "requestStatisticsNarrative": "Il sito contiene <em>{{numberResources}} risorse</em> distribuite su <em>{{numberHosts}} hosts</em>, per una richiesta di <em>{{totalRequestBytes}} Bytes</em>.",
+      "responseStatistics": "Sintesi delle Risposte",
+      "responseStatisticsNarrative": "La dimensione totale della pagina é <em>{{totalSize}}</em>.",
+      "other": "Altro",
+      "htmlResponseBytes": "HTML",
+      "textResponseBytes": "Testo",
+      "cssResponseBytes": "Cascading Style Sheets",
+      "imageResponseBytes": "Immagini",
+      "javascriptResponseBytes": "JavaScript",
+      "flashResponseBytes": "Flash",
+      "otherResponseBytes": "Altro Contenuto",
+      "numberStaticResources": "Contenuto Statico",
+      "numberJsResources": "JavaScript",
+      "numberCssResources": "Cascading Style Sheets",
+      "speed": "Velocità",
+      "usability": "Usabilità",
+      "thankYou": "Grazie mille!"
+  }
+  },
+  "ja": {
+    "translation": {
+    }
+  },
+  "ko": {
+    "translation": {
+    }
+  },
+  "lv": {
+    "translation": {
+    }
+  },
+  "lt": {
+    "translation": {
+    }
+  },
+  "no": {
+    "translation": {
+    }
+  },
+  "pl": {
+    "translation": {
+    }
+  },
+  "pt-BR": {
+    "translation": {
+    }
+  },
+  "pt-PT": {
+    "translation": {
+    }
+  },
+  "ro": {
+    "translation": {
+    }
+  },
+  "ru": {
+    "translation": {
+    }
+  },
+  "sr": {
+    "translation": {
+    }
+  },
+  "sk": {
+    "translation": {
+    }
+  },
+  "sl": {
+    "translation": {
+    }
+  },
+  "es": {
+    "translation": {
+    }
+  },
+  "sv": {
+    "translation": {
+    }
+  },
+  "th": {
+    "translation": {
+    }
+  },
+  "tr": {
+    "translation": {
+    }
+  },
+  "uk": {
+    "translation": {
+    }
+  },
+  "vi": {
+    "translation": {
+    }
+  }
+}
