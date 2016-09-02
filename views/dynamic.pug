@@ -148,6 +148,7 @@ block slides
             allUlsResizedHeights += ((articleHeight -
                 (ul.offsetTop - article.offsetTop)) / lenUls);
           }
+          console.log(allUlsOffsetHeights, allUlsResizedHeights)
           if (allUlsOffsetHeights > allUlsResizedHeights) {
             for (const ul of uls) {
               ul.style.height = ((articleHeight -
@@ -199,14 +200,25 @@ block slides
         code.appendChild(fragment);
       }
 
-      window.addEventListener('resize', drawCharts);
-      window.addEventListener('click', drawCharts);
-      window.addEventListener('keydown', drawCharts);
-      window.addEventListener('resize', sizeSlideElements);
-      window.addEventListener('click', sizeSlideElements);
-      window.addEventListener('keydown', sizeSlideElements);
-      window.addEventListener('DOMContentLoaded', sizeSlideElements);
-      window.addEventListener('DOMContentLoaded', addImagePreviews);
+      window.addEventListener('click', () => {
+        drawCharts();
+        sizeSlideElements();
+      });
+
+      window.addEventListener('keydown', () => {
+        drawCharts();
+        sizeSlideElements();
+      });
+
+      window.addEventListener('resize', () => {
+        drawCharts();
+        sizeSlideElements();
+      });
+
+      window.addEventListener('DOMContentLoaded', () => {
+        addImagePreviews();
+        sizeSlideElements();
+      });
 
   each group, groupName in insights.orderedRules
     if group.length > 0

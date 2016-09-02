@@ -212,3 +212,11 @@ li a[data-content-type*='/vtt']::before,
 li a[data-content-type*='/ttml']::before {
   content: "💬 Captions";
 }
+
+ul {
+  border: solid 1px red;
+}
+
+article {
+  border: solid 1px green;
+}
