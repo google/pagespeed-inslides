@@ -289,14 +289,15 @@ const pageSpeedInsights = {
           headers: {'User-Agent': USER_AGENT},
           url: url
         };
-        request.head(options, (err, response) => {
+        // HEAD would be friendlier here, but some Web servers return 403,
+        // so going for GET :-/
+        request.get(options, (err, response) => {
           if (err || response.statusCode !== 200) {
-            console.warn(`HEAD ${url}`, err || response.statusCode);
             // Fail silently if the content type can't be determined
-            return resolve('text/html');
+            return resolve(false);
           }
           // Fail silently if no content-type header is set
-          return resolve(response.headers['content-type'] || 'text/html');
+          return resolve(response.headers['content-type'] || false);
         });
       }));
     }
@@ -306,9 +307,11 @@ const pageSpeedInsights = {
         if (!{}.hasOwnProperty.call(insights.resourceTypes, url)) {
           continue;
         }
-        insights.resourceTypes[url] = {
-          type: resourceTypes[i]
-        };
+        if (resourceTypes[i]) {
+          insights.resourceTypes[url] = {
+            type: resourceTypes[i]
+          };
+        }
         i++;
       }
       return insights;

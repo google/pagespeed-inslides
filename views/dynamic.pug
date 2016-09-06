@@ -2,7 +2,7 @@ extends slides
 
 block variables
   - const favicon = 'https://www.google.com/images/icons/product/pagespeed-64.png';
-  - const title = `${t('presentationTitle')} <br> ${insights.finalUrl}`;
+  - const title = `${t('presentationTitle')}`;
   - const subtitle = `<img src='http://www.google.com/s2/favicons?domain_url=${encodeURIComponent(insights.finalUrl)}'> ${insights.title}`;
   - const date = new Intl.DateTimeFormat(language, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}).format(new Date());
 block slides
@@ -18,20 +18,6 @@ block slides
       p
         img.user-profile-image
         span.user-display-name
-  script.
-    // Current user JSONP callback
-    function _showCurrentUser(currentUser) {
-      if (currentUser.status !== 'Success') {
-        return;
-      }
-      const email = currentUser.message.replace(/.*?id (\w+@google.com).*?/g, '$1');
-      const profile = currentUser.user_profile;
-      const displayName = profile.displayName;
-      const profileImage = profile.image.url;
-      document.querySelector('.user-display-name').textContent = `${displayName} (${email}) — #{date}`;
-      document.querySelector('.user-profile-image').src = profileImage;
-    }
-  script(src='https://script.google.com/a/macros/google.com/s/AKfycbykI7lRcoqqpca9ODU9B31d5W3Xyxll-Z-gM2x_l3JntrcoTKg/exec?callback=_showCurrentUser')
   script(src='https://www.gstatic.com/charts/loader.js')
   - const link = `<a href='${insights.finalUrl}'>${URL.parse(insights.finalUrl).hostname}</a>`;
   if insights.screenshot
@@ -136,25 +122,6 @@ block slides
           }
           const articleHeight = (slideHeight - hgroupHeight - 2 * 40 - 1.5 * 45);
           article.style.height = articleHeight + 'px';
-          const uls = article.querySelectorAll('ul');
-          if (!uls) {
-            return;
-          }
-          const lenUls = uls.length;
-          let allUlsOffsetHeights = 0;
-          let allUlsResizedHeights = 0;
-          for (const ul of uls) {
-            allUlsOffsetHeights += ul.offsetHeight;
-            allUlsResizedHeights += ((articleHeight -
-                (ul.offsetTop - article.offsetTop)) / lenUls);
-          }
-          console.log(allUlsOffsetHeights, allUlsResizedHeights)
-          if (allUlsOffsetHeights > allUlsResizedHeights) {
-            for (const ul of uls) {
-              ul.style.height = ((articleHeight -
-                (ul.offsetTop - article.offsetTop)) / lenUls) + 'px';
-            }
-          }
         } catch (e) {
           // Fail silently
         }
@@ -290,6 +257,25 @@ block slides
       img(src='images/google.svg')
     hgroup(style='background:black; opacity:0.75; width:100%; padding:.5em 1em;')
       h1.white #{t('thankYou')}
-      h2.white(data-config-subtitle='')
-      p.white(data-config-presenter='')
+      p
+        img.user-profile-image
+        span.user-display-name
   slide.backdrop
+  script.
+    // Current user JSONP callback
+    function _showCurrentUser(currentUser) {
+      if (currentUser.status !== 'Success') {
+        return;
+      }
+      const email = currentUser.message.replace(/.*?id (\w+@google.com).*?/g, '$1');
+      const profile = currentUser.user_profile;
+      const displayName = profile.displayName;
+      const profileImage = profile.image.url;
+      for (const userDisplayName of document.querySelectorAll('.user-display-name')) {
+        userDisplayName.textContent = `${displayName} (${email}) — #{date}`;
+      }
+      for (const userProfileImage of document.querySelectorAll('.user-profile-image')) {
+        userProfileImage.src = profileImage;
+      }
+    }
+  script(src='https://script.google.com/a/macros/google.com/s/AKfycbykI7lRcoqqpca9ODU9B31d5W3Xyxll-Z-gM2x_l3JntrcoTKg/exec?callback=_showCurrentUser')

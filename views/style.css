@@ -16,7 +16,8 @@ slides > slide {
 article {
   width: 100%;
   height: 100%;
-  overflow-y: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 aside.gdbar {
@@ -81,8 +82,6 @@ em {
 
 ul {
   margin-left: 0;
-  overflow-y: scroll;
-  overflow-x: hidden;
 }
 
 li {
@@ -211,12 +210,4 @@ li a[href$='.srt']::before,
 li a[data-content-type*='/vtt']::before,
 li a[data-content-type*='/ttml']::before {
   content: "💬 Captions";
-}
-
-ul {
-  border: solid 1px red;
-}
-
-article {
-  border: solid 1px green;
 }
