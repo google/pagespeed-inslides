@@ -32,6 +32,13 @@ aside.gdbar {
   margin: 15px 15px !important;
 }
 
+.rule-importance {
+  width: 75%;
+  position: absolute;
+  bottom: 10px;
+  margin-left: 5vw;
+}
+
 .screenshot {
   background-color: #eee;
   display: block;

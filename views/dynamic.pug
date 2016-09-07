@@ -63,13 +63,63 @@ block slides
         numberJsResources: '#{t('numberJsResources')}',
         numberCssResources: '#{t('numberCssResources')}',
       };
-      google.charts.load('current', {'packages': ['corechart']});
+      google.charts.load('current', {'packages': ['corechart', 'bar']});
       google.charts.setOnLoadCallback(drawCharts);
+
+      function drawCharts() {
+        drawPieCharts();
+        drawBarCharts();
+      }
+
+      let barCharts = {};
+      function prepareBarChart(rules, currentRule, groupName) {
+        if (!barCharts[groupName]) {
+          barCharts[groupName] = [];
+        }
+        let dataTable = [['', '', {role: 'style'}]];
+        rules.forEach(rule => {
+          dataTable.push([rule.ruleName.split(/\s/).slice(0, 5).join(' '), rule.ruleImpact, rule.ruleName === currentRule ? '#2a7cdf' : '#ccc']);
+        });
+        barCharts[groupName].push({
+          dataTable: dataTable,
+          currentRule: currentRule
+        });
+      }
+
+      function drawBarCharts() {
+        const options = {
+          legend: {position: 'none'},
+          chartArea: {width: '50%'},
+          backgroundColor: 'transparent',
+          hAxis: {
+            gridlines: {count: 0},
+            baselineColor: 'none'
+          },
+          vAxis: {
+            gridlines: {count: 0}
+          },
+          enableInteractivity: false,
+          fontSize: 8,
+          fontName: 'HelveticaNeue-Light',
+          height: 50
+        };
+        for (const groupName in barCharts) {
+          if (barCharts[groupName].length <= 1) {
+            continue;
+          }
+          barCharts[groupName].forEach(barChart => {
+            const data = google.visualization.arrayToDataTable(barChart.dataTable);
+            const container = document.getElementById(barChart.currentRule);
+            const chart = new google.visualization.BarChart(container);
+            chart.draw(data, options);
+          });
+        }
+      }
 
       /**
        * Draws the charts and resizes them to optimal size
        */
-      function drawCharts() {
+      function drawPieCharts() {
         const options = {
           pieSliceText: 'value',
           pieResidueSliceLabel: '#{t('other')}',
@@ -193,9 +243,22 @@ block slides
         aside.gdbar
           img(src='images/google.svg')
         hgroup(style='background:black; opacity:0.75; width:100%; padding:.5em 1em;')
-          h1.white #{t(groupName)}
+          h1.white #{t(groupName)} (#{insights.scores[groupName]}/100)
       each rule in group
         slide
+          .rule-importance(id=rule.localizedRuleName)
+          script.
+            var groupName = !{JSON.stringify(groupName)};
+            var orderedRules = !{JSON.stringify(insights.orderedRules)};
+            orderedRules = orderedRules[groupName];
+            prepareBarChart(orderedRules.map(rule => {
+              return {
+                ruleName: rule.localizedRuleName,
+                ruleImpact: rule.ruleImpact
+              };
+            }),
+            !{JSON.stringify(rule.localizedRuleName)},
+            !{JSON.stringify(groupName)});
           hgroup
             h2 #{rule.localizedRuleName}
           article
