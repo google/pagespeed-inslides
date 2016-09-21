@@ -43,10 +43,12 @@ slides.prepare()
   app.use('/pagespeed/', express.static(path.join(__dirname, 'public')));
 
   // Setup dynamic routes
+  app.get('/pagespeed/', routes.getIndex);
   app.get('/pagespeed/raw', routes.getPageSpeedRaw);
   app.get('/pagespeed/processed', routes.getPageSpeedProcessed);
   app.get('/pagespeed/report', routes.getPageSpeedReport);
   app.get('/pagespeed/slides', routes.getPageSpeedSlides);
+  app.get('/pagespeed/screenshot', routes.getScreenshot);
 
   // Start server
   const server = app.listen(process.env.PORT || 3000, function() {

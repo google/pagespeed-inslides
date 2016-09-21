@@ -274,7 +274,11 @@ block slides
                         - const match = urlHtml.html.match(/>(.*?)<\/a>/);
                         - const url = match ? match[1] : '';
                         - const contentType = url && insights.resourceTypes[url] ? insights.resourceTypes[url].type : '';
+                        - const contentLength = url && insights.resourceTypes[url] ? `&ensp;<small class="file-size">(${filesize(insights.resourceTypes[url].size).replace(/\s/g, ' ')})</small>` : '';
                         - urlHtml.html = urlHtml.html.replace(/title=/, 'data-content-type="' + contentType + '" title=');
+                        - if (contentLength) {
+                        -   urlHtml.html = urlHtml.html.replace(/<\/a>/, `</a>${contentLength}`);
+                        - }
                         - let codeId = '';
                         - if (/(?:text\/css|javascript|text\/html)/.test(contentType)) {
                         -   let lang;

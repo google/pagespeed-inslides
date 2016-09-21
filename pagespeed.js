@@ -5,14 +5,14 @@ const beautifyJs = require('js-beautify').js;
 const beautifyCss = require('js-beautify').css;
 const beautifyHtml = require('js-beautify').html;
 const Prism = require('prismjs');
+const randomUserAgent = require('random-fake-useragent');
 
 const request = require('request');
 const env = require('node-env-file');
 env(path.join(__dirname, '.env'));
 
 const API_KEY = process.env.API_KEY;
-const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) ' +
-    'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.75 Safari/537.36';
+const USER_AGENT = randomUserAgent.getRandom('Chrome');
 const CODE_CHARACTER_LIMIT = 10000;
 
 const pageSpeedInsights = {
@@ -291,13 +291,16 @@ const pageSpeedInsights = {
         };
         // HEAD would be friendlier here, but some Web servers return 403,
         // so going for GET :-/
-        request.get(options, (err, response) => {
+        request.get(options, (err, response, body) => {
           if (err || response.statusCode !== 200) {
             // Fail silently if the content type can't be determined
             return resolve(false);
           }
           // Fail silently if no content-type header is set
-          return resolve(response.headers['content-type'] || false);
+          return resolve({
+            'content-type': response.headers['content-type'] || false,
+            'content-length': response.headers['content-length'] || body.length
+          });
         });
       }));
     }
@@ -309,7 +312,8 @@ const pageSpeedInsights = {
         }
         if (resourceTypes[i]) {
           insights.resourceTypes[url] = {
-            type: resourceTypes[i]
+            type: resourceTypes[i]['content-type'],
+            size: resourceTypes[i]['content-length']
           };
         }
         i++;

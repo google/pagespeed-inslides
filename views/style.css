@@ -67,6 +67,11 @@ aside.gdbar {
   padding-left: .25em;
 }
 
+.file-size {
+  font-size: smaller;
+  color: orange;
+}
+
 .user-display-name {
 
 }

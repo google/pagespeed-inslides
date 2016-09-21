@@ -37,6 +37,7 @@
   },
   "en": {
     "translation": {
+      "appTitle": "PageSpeed InSlides",
       "presentationTitle": "PageSpeed InSlides Results",
       "screenshot": "Screenshot",
       "source": "Source: {{link}}",
@@ -78,6 +79,7 @@
   },
   "de": {
     "translation": {
+      "appTitle": "PageSpeed InSlides",
       "presentationTitle": "PageSpeed InSlides Ergebnisse",
       "screenshot": "Screenshot",
       "source": "Quelle: {{link}}",
@@ -123,6 +125,7 @@
   },
   "it": {
     "translation": {
+      "appTitle": "PageSpeed InSlides",
       "presentationTitle": "Risultati della PageSpeed InSlides",
       "screenshot": "Screenshot",
       "source": "Fonte: {{link}}",
