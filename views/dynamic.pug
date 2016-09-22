@@ -298,9 +298,6 @@ block slides
                             details
                               summary !{urlHtml.html}
                               div
-                            if (index === 0)
-                              script.
-                                addCodePreview(document.querySelector('li[data-code-id="#{codeId}"]'));
                         else if /(?:font)/.test(contentType)
                           li
                             - const randomId = 'font-' + Math.random().toString().substr(2);

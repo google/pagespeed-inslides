@@ -13,31 +13,52 @@ const screenshot = {
     let pageSize = options.pageSize;
     let pageOrientation = options.pageOrientation;
     let pageMarginInCm = options.pageMarginInCm;
+
+    const dpi = 150;
     let fileName;
 
     let page = null;
     let instance = null;
 
-    return phantom.create(['--ignore-ssl-errors=yes', '--web-security=no'])
-    .then(instance_ => {
+    return phantom.create([
+      '--ignore-ssl-errors=yes',
+      '--web-security=no',
+      '--load-images=true',
+      '--local-to-remote-url-access=true'
+    ]).then(instance_ => {
       console.log('Creating instance');
       instance = instance_;
       return instance.createPage();
     }).then(page_ => {
       console.log('Creating page');
       page = page_;
-      page.property('settings', {userAgent: USER_AGENT})
-      .then(() => {
-        return page;
+      page.on('onError', msg => {
+        console.log('onError', msg);
+      });
+      page.on('onLoadFinished', msg => {
+        console.log('onLoadFinished', msg);
+      });
+      page.on('onConsoleMessage', (msg) => {
+        console.log('From Phantom.js (console.log):', msg);
+      });
+      page.on('onCallback', (msg) => {
+        console.log('From Phantom.js (phantomCallback): type', typeof msg);
+        callbackData = msg;
+      });
+      return page.property('settings', {
+        userAgent: USER_AGENT,
+        javascriptEnabled: true,
+        loadImages: true,
+        localToRemoteUrlAccessEnabled: true,
+        webSecurityEnabled: false
       });
     }).then(() => {
       // Adapted from http://stackoverflow.com/questions/22017746/
       pageSize = (pageSize || 'A4');
       pageOrientation = (pageOrientation || 'portrait');
-      pageMarginInCm = pageMarginInCm || 1;
-      const dpi = 150;
-      let pdfViewPortWidth = 1024;
-      let pdfViewPortHeight = 768;
+      pageMarginInCm = pageMarginInCm || 0.5;
+      let pdfViewPortWidth;
+      let pdfViewPortHeight;
       const cmToInchFactor = 0.393701;
       let widthInInches;
       let heightInInches;
@@ -83,8 +104,8 @@ const screenshot = {
       pdfViewPortWidth = Math.floor(dpi * widthInInches);
       pdfViewPortHeight = Math.floor(dpi * heightInInches);
       viewPort = {
-        width: pdfViewPortWidth,
-        height: pdfViewPortHeight
+        width: 1200,//pdfViewPortWidth,
+        height: 1200//pdfViewPortHeight
       };
       const pageSizeOptions = {
         format: pageSize,
@@ -97,9 +118,10 @@ const screenshot = {
       console.log('Setting view port to ' + JSON.stringify(viewPort));
       return page.property('viewportSize', viewPort);
     }).then(() => {
-      console.log('Setting DPI to 150');
-      return page.property('dpi', 150);
+      console.log('Setting DPI to ', dpi);
+      return page.property('dpi', dpi);
     }).then(() => {
+      console.log('Start opening')
       return page.open(url);
     }).then(status => {
       console.log('Status', status);
@@ -109,8 +131,16 @@ const screenshot = {
       }
       fileName = path.join('screenshots', format,
           Date.now() + '.' + format);
-      return page.render(fileName);
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log('Start rendering');
+          page.render(fileName).then(() => {
+            return resolve(fileName);
+          });
+        }, 2000);
+      })
     }).then(() => {
+      console.log('Exiting');
       instance.exit();
       page.close();
       return Promise.resolve(fileName);
