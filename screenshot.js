@@ -14,7 +14,7 @@ const screenshot = {
     let pageOrientation = options.pageOrientation;
     let pageMarginInCm = options.pageMarginInCm;
 
-    const dpi = 150;
+    const dpi = 72;
     let fileName;
 
     let page = null;
@@ -104,8 +104,8 @@ const screenshot = {
       pdfViewPortWidth = Math.floor(dpi * widthInInches);
       pdfViewPortHeight = Math.floor(dpi * heightInInches);
       viewPort = {
-        width: 1200,//pdfViewPortWidth,
-        height: 1200//pdfViewPortHeight
+        width: pdfViewPortWidth,
+        height:pdfViewPortHeight
       };
       const pageSizeOptions = {
         format: pageSize,

@@ -4,7 +4,8 @@
   "description": "PageSpeed InSlides Mobile Site Performance Tool",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "dev": "nodejs-dashboard node index.js"
   },
   "eslintConfig": {
     "extends": "google"
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "eslint": "^3.1.1",
-    "eslint-config-google": "^0.6.0"
+    "eslint-config-google": "^0.6.0",
+    "nodejs-dashboard": "^0.1.0"
   }
 }
