@@ -203,6 +203,28 @@
   },
   "es": {
     "translation": {
+      "appTitle": "PageSpeed InSlides",
+      "presentationTitle": "Resultados PageSpeed InSlides",
+      "screenshot": "Captura de pantalla",
+      "source": "Fuente: {{link}}",
+      "requestStatistics": "Estadísticas de peticiones",
+      "requestStatisticsNarrative": "La página contiene <em>{{numberResources}} recursos</em> de <em>{{numberHosts}} hosts únicos</em> con un total de <em>{{totalRequestBytes}} de peticiones</em>.",
+      "responseStatistics": "Estadísticas de respuestas",
+      "responseStatisticsNarrative": "El peso total descargado de todos los recursos de la página es de <em>{{totalSize}}</em>.",
+      "other": "Otros",
+      "htmlResponseBytes": "HTML",
+      "textResponseBytes": "Texto",
+      "cssResponseBytes": "Cascading Style Sheets",
+      "imageResponseBytes": "Imágenes",
+      "javascriptResponseBytes": "JavaScript",
+      "flashResponseBytes": "Flash",
+      "otherResponseBytes": "Otros contenidos",
+      "numberStaticResources": "Contenidos estáticos",
+      "numberJsResources": "JavaScript",
+      "numberCssResources": "Cascading Style Sheets",
+      "speed": "Velocidad",
+      "usability": "Usabilidad",
+      "thankYou": "¡Muchas gracias!"
     }
   },
   "sv": {

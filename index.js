@@ -10,8 +10,11 @@ app.use(compression());
 
 const routes = require('./routes.js');
 const slides = require('./slides.js');
+const base64 = require('./base64.js');
 
-slides.prepare()
+base64.encodeAssets()
+.then(encoded => (app.locals.encoded = encoded))
+.then(slides.prepare())
 .then(() => {
   // Initialize i18n
   const i18nextOptions = {

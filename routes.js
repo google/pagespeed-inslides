@@ -63,7 +63,9 @@ const routes = {
       res.render('dynamic', {
         insights: insights,
         filesize: filesize,
-        URL: URL
+        URL: URL,
+        encoded: req.app.locals.encoded,
+        __dirname: __dirname
       });
     })
     .catch(err => {

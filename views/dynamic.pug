@@ -9,9 +9,9 @@ block slides
   style
     include style.css
     include prism-coy.css
-  slide.title-slide.segue.fill.nobackground(style='background-image: url(./images/datacenter' + (Math.floor(Math.random() * 12) + 1) + '.jpg)')
+  slide.title-slide.segue.fill.nobackground(style='background-image: url(data:;base64,' + encoded[Object.keys(encoded)[(Math.floor(Math.random() * 12) + 1)]] + ')')
     aside.gdbar
-      img(src='images/google.svg')
+      img(src='data:image/svg+xml;base64,' + encoded[__dirname + '/public/images/google.svg'])
     hgroup(style='background:black; opacity:0.75; width:100%; padding:.5em 1em;')
       h1.white(data-config-title='')
       h2.white(data-config-subtitle='')
@@ -25,15 +25,15 @@ block slides
       hgroup
         h2 #{t('screenshot')}
       article.flexbox.vcenter.screenshot(style='background-image: url(data:' + insights.screenshot.mimeType + ';base64,' + insights.screenshot.data + '); background-repeat: no-repeat; background-size: contain; background-position: center;')
-      footer.source.black !{t('source', {link: link, interpolation: {escape: false}})}
+      footer.source.black !{t('source', {link: link, interpolation: {escapeValue: false}})}
   slide
     hgroup
       h2 #{t('requestStatistics')}
     article
       - const totalRequestBytes = filesize(insights.pageStats.totalRequestBytes);
-      p !{t('requestStatisticsNarrative', {numberResources: insights.pageStats.numberResources, numberHosts: insights.pageStats.numberHosts, totalRequestBytes: totalRequestBytes, interpolation: {escape: false}})}
+      p !{t('requestStatisticsNarrative', {numberResources: insights.pageStats.numberResources, numberHosts: insights.pageStats.numberHosts, totalRequestBytes: totalRequestBytes, interpolation: {escapeValue: false}})}
       #requestBreakDown.chart
-    footer.source.black !{t('source', {link: link, interpolation: {escape: false}})}
+    footer.source.black !{t('source', {link: link, interpolation: {escapeValue: false}})}
   slide
     hgroup
       h2 #{t('responseStatistics')}
@@ -41,9 +41,9 @@ block slides
       - const totalSize = filesize(insights.pageStats.orderedResponseBytes.reduce(function(prev, curr) {
       -   return {weight: prev.weight + curr.weight};
       - }, {weight: 0}).weight);
-      p !{t('responseStatisticsNarrative', {totalSize: totalSize, interpolation: {escape: false}})}
+      p !{t('responseStatisticsNarrative', {totalSize: totalSize, interpolation: {escapeValue: false}})}
       #responseBreakDown.chart
-    footer.source.black !{t('source', {link: link, interpolation: {escape: false}})}
+    footer.source.black !{t('source', {link: link, interpolation: {escapeValue: false}})}
     - for (let item in insights.pageStats.orderedResponseBytes) {
     -   insights.pageStats.orderedResponseBytes[item].human = filesize(insights.pageStats.orderedResponseBytes[item].weight);
     - }
@@ -239,9 +239,9 @@ block slides
 
   each group, groupName in insights.orderedRules
     if group.length > 0
-      slide.title-slide.segue.fill.nobackground(style='background-image: url(./images/datacenter' + (Math.floor(Math.random() * 12) + 1) + '.jpg)')
+      slide.title-slide.segue.fill.nobackground(style='background-image: url(data:;base64,' + encoded[Object.keys(encoded)[(Math.floor(Math.random() * 12) + 1)]] + ')')
         aside.gdbar
-          img(src='images/google.svg')
+          img(src='data:image/svg+xml;base64,' + encoded[__dirname + '/public/images/google.svg'])
         hgroup(style='background:black; opacity:0.75; width:100%; padding:.5em 1em;')
           h1.white #{t(groupName)} (#{insights.scores[groupName]}/100)
       each rule in group
@@ -316,9 +316,9 @@ block slides
                               img.image-preview(src=url)
                         else
                           li !{urlHtml.html}
-  slide.title-slide.segue.fill.nobackground(style='background-image: url(./images/datacenter' + (Math.floor(Math.random() * 12) + 1) + '.jpg)')
+  slide.title-slide.segue.fill.nobackground(style='background-image: url(data:;base64,' + encoded[Object.keys(encoded)[(Math.floor(Math.random() * 12) + 1)]] + ')')
     aside.gdbar
-      img(src='images/google.svg')
+      img(src='data:image/svg+xml;base64,' + encoded[__dirname + '/public/images/google.svg'])
     hgroup(style='background:black; opacity:0.75; width:100%; padding:.5em 1em;')
       h1.white #{t('thankYou')}
       p

@@ -23,7 +23,7 @@
     "express": "^4.13.4",
     "filesize": "^3.3.0",
     "html2jade": "^0.8.4",
-    "html5-slides": "git+ssh://git@github.com/tomayac/html5-slides.git",
+    "html5-slides": "^1.1.5",
     "i18next": "^3.4.1",
     "i18next-express-middleware": "^1.0.1",
     "intl": "^1.2.4",
