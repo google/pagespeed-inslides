@@ -9,7 +9,7 @@ block slides
   style
     include style.css
     include prism-coy.css
-  slide.title-slide.segue.fill.nobackground(style='background-image: url(data:;base64,' + encoded[Object.keys(encoded)[(Math.floor(Math.random() * 12) + 1)]] + ')')
+  slide.title-slide.segue.fill.nobackground(style='background-image: url(data:;base64,' + encoded[Object.keys(encoded)[(Math.floor(Math.random() * 11))]] + ')')
     aside.gdbar
       img(src='data:image/svg+xml;base64,' + encoded[__dirname + '/public/images/google.svg'])
     hgroup(style='background:black; opacity:0.75; width:100%; padding:.5em 1em;')
@@ -239,7 +239,7 @@ block slides
 
   each group, groupName in insights.orderedRules
     if group.length > 0
-      slide.title-slide.segue.fill.nobackground(style='background-image: url(data:;base64,' + encoded[Object.keys(encoded)[(Math.floor(Math.random() * 12) + 1)]] + ')')
+      slide.title-slide.segue.fill.nobackground(style='background-image: url(data:;base64,' + encoded[Object.keys(encoded)[(Math.floor(Math.random() * 11))]] + ')')
         aside.gdbar
           img(src='data:image/svg+xml;base64,' + encoded[__dirname + '/public/images/google.svg'])
         hgroup(style='background:black; opacity:0.75; width:100%; padding:.5em 1em;')
@@ -316,7 +316,7 @@ block slides
                               img.image-preview(src=url)
                         else
                           li !{urlHtml.html}
-  slide.title-slide.segue.fill.nobackground(style='background-image: url(data:;base64,' + encoded[Object.keys(encoded)[(Math.floor(Math.random() * 12) + 1)]] + ')')
+  slide.title-slide.segue.fill.nobackground(style='background-image: url(data:;base64,' + encoded[Object.keys(encoded)[(Math.floor(Math.random() * 11))]] + ')')
     aside.gdbar
       img(src='data:image/svg+xml;base64,' + encoded[__dirname + '/public/images/google.svg'])
     hgroup(style='background:black; opacity:0.75; width:100%; padding:.5em 1em;')
