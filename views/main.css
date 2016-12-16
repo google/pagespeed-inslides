@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: initial;
+  padding: 1rem;
+  width: initial;
+}
+
+form div {
+  background-color: #eee;
+  margin: .5rem;
+  padding: 1rem;
+}

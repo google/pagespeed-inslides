@@ -24,7 +24,7 @@ const pageSpeedInsights = {
           https://www.googleapis.com/pagespeedonline/v2/runPagespeed
           ?url=${encodeURIComponent(params.url)}
           &filter_third_party_resources=
-          ${params.filterThirdPartyResources || 'false'}
+          ${params.filterThirdPartyResources === 'false' ? 'false' : 'true'}
           &locale=${params.locale || 'en'}
           ${params.rule ? '&rule=' + params.rule : ''}
           &screenshot=${params.screenshot || false}
