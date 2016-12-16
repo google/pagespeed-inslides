@@ -42,7 +42,7 @@
       "screenshot": "Screenshot",
       "source": "Source: {{link}}",
       "requestStatistics": "Request Statistics",
-      "requestStatisticsNarrative": "The page contains <em>{{numberResources}} resources</em> from <em>{{numberHosts}} unique hosts</em> weighing in at <em>{{totalRequestBytes}} total request bytes</em>.",
+      "requestStatisticsNarrative": "The page contains <em>{{numberResources}} resources</em> from <em>{{numberHosts}} unique hosts</em> weighing in at <em>{{totalRequestBytes}}</em> in total.",
       "responseStatistics": "Response Statistics",
       "responseStatisticsNarrative": "The download size for all resources of the page was <em>{{totalSize}}</em>.",
       "other": "Other",
@@ -84,7 +84,7 @@
       "screenshot": "Screenshot",
       "source": "Quelle: {{link}}",
       "requestStatistics": "Request-Statistiken",
-      "requestStatisticsNarrative": "Die Seite enthält <em>{{numberResources}} Ressourcen</em> von <em>{{numberHosts}} eindeutigen Hosts</em>, resultierend in <em>{{totalRequestBytes}} Request-Bytes insgesamt</em>.",
+      "requestStatisticsNarrative": "Die Seite enthält <em>{{numberResources}} Ressourcen</em> von <em>{{numberHosts}} eindeutigen Hosts</em>, resultierend in <em>{{totalRequestBytes}} insgesamt</em>.",
       "responseStatistics": "Response-Statistiken",
       "responseStatisticsNarrative": "Der insgesamte Download-Umfang der Seite ist <em>{{totalSize}}</em>.",
       "other": "Sonstiges",
@@ -130,7 +130,7 @@
       "screenshot": "Screenshot",
       "source": "Fonte: {{link}}",
       "requestStatistics": "Sintesi delle Richieste",
-      "requestStatisticsNarrative": "Il sito contiene <em>{{numberResources}} risorse</em> distribuite su <em>{{numberHosts}} hosts</em>, per una richiesta di <em>{{totalRequestBytes}} Bytes</em>.",
+      "requestStatisticsNarrative": "Il sito contiene <em>{{numberResources}} risorse</em> distribuite su <em>{{numberHosts}} hosts</em>, per una richiesta di <em>{{totalRequestBytes}}</em>.",
       "responseStatistics": "Sintesi delle Risposte",
       "responseStatisticsNarrative": "La dimensione totale della pagina é <em>{{totalSize}}</em>.",
       "other": "Altro",
@@ -140,8 +140,8 @@
       "imageResponseBytes": "Immagini",
       "javascriptResponseBytes": "JavaScript",
       "flashResponseBytes": "Flash",
-      "otherResponseBytes": "Altro Contenuto",
-      "numberStaticResources": "Contenuto Statico",
+      "otherResponseBytes": "Altro contenuto",
+      "numberStaticResources": "Contenuto statico",
       "numberJsResources": "JavaScript",
       "numberCssResources": "Cascading Style Sheets",
       "speed": "Velocità",
@@ -173,12 +173,30 @@
     "translation": {
     }
   },
-  "pt-BR": {
+  "pt": {
     "translation": {
-    }
-  },
-  "pt-PT": {
-    "translation": {
+      "appTitle": "PageSpeed InSlides",
+      "presentationTitle": "Resulados PageSpeed InSlides",
+      "screenshot": "Captura de tela",
+      "source": "Fonte: {{link}}",
+      "requestStatistics": "Estatísticas de petições",
+      "requestStatisticsNarrative": "A página contém <em>{{numberResources}} recursos</em> de <em>{{numberHosts}} hosts</em> únicos com um total de <em>{{totalRequestBytes}}</em> de petições.",
+      "responseStatistics": "Estatísticas de respostas",
+      "responseStatisticsNarrative": "O peso total descarregado de todos os recursos da página é de <em>{{totalSize}}</em>.",
+      "other": "Outras",
+      "htmlResponseBytes": "HTML",
+      "textResponseBytes": "Texto",
+      "cssResponseBytes": "Cascading Style Sheets",
+      "imageResponseBytes": "Imagens",
+      "javascriptResponseBytes": "JavaScript",
+      "flashResponseBytes": "Flash",
+      "otherResponseBytes": "Outros conteúdos",
+      "numberStaticResources": "Conteúdos estáticos",
+      "numberJsResources": "JavaScript",
+      "numberCssResources": "Cascading Style Sheets",
+      "speed": "Velocidade",
+      "usability": "Usabilidade",
+      "thankYou": "Obrigado!"
     }
   },
   "ro": {
