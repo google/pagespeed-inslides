@@ -23,8 +23,8 @@ const pageSpeedInsights = {
       const PAGESPEEDS_INSIGHTS_URL = `
           https://www.googleapis.com/pagespeedonline/v2/runPagespeed
           ?url=${encodeURIComponent(params.url)}
-          &filter_third_party_resources=
-          ${params.filterThirdPartyResources === 'false' ? 'false' : 'true'}
+          &filter_third_party_resources=${
+              params.filterThirdPartyResources || false}
           &locale=${params.locale ?
               (params.locale === 'en-AU' ? 'en' : params.locale) :
               'en'}

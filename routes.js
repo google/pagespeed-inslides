@@ -21,7 +21,7 @@ const routes = {
       return res.send(raw);
     })
     .catch(err => {
-      res.status(500).send(err.stack);
+      res.status(500).render('error', {error: err.stack});
     });
   },
 
@@ -35,7 +35,7 @@ const routes = {
       return res.send(insights);
     })
     .catch(err => {
-      res.status(500).send(err.stack);
+      res.status(500).render('error', {error: err.stack});
     });
   },
 
@@ -49,7 +49,7 @@ const routes = {
       res.render('report', {insights: insights});
     })
     .catch(err => {
-      res.status(500).send(err.stack);
+      res.status(500).render('error', {error: err.stack});
     });
   },
 
@@ -69,7 +69,7 @@ const routes = {
       });
     })
     .catch(err => {
-      res.status(500).send(err.stack);
+      res.status(500).render('error', {error: err.stack});
     });
   },
 
