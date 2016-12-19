@@ -25,7 +25,9 @@ const pageSpeedInsights = {
           ?url=${encodeURIComponent(params.url)}
           &filter_third_party_resources=
           ${params.filterThirdPartyResources === 'false' ? 'false' : 'true'}
-          &locale=${params.locale || 'en'}
+          &locale=${params.locale ?
+              (params.locale === 'en-AU' ? 'en' : params.locale) :
+              'en'}
           ${params.rule ? '&rule=' + params.rule : ''}
           &screenshot=${params.screenshot || false}
           ${params.strategy ? '&strategy=' + params.strategy : ''}

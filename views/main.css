@@ -13,3 +13,17 @@ form div {
   margin: .5rem;
   padding: 1rem;
 }
+
+button {
+  margin-right: .5rem !important;
+}
+
+.loading {
+  animation: spin 2s ease-in-out infinite;
+  display: inline-block;
+}
+@keyframes spin {
+  100% {
+    transform:rotate(360deg);
+  }
+}

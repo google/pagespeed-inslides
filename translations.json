@@ -37,7 +37,7 @@
   },
   "en": {
     "translation": {
-      "appTitle": "PageSpeed InSlides",
+      "appTitle": "🔥 PageSpeed InSlides",
       "presentationTitle": "PageSpeed InSlides Results",
       "screenshot": "Screenshot",
       "source": "Source: {{link}}",
@@ -79,7 +79,7 @@
   },
   "de": {
     "translation": {
-      "appTitle": "PageSpeed InSlides",
+      "appTitle": "🔥 PageSpeed InSlides",
       "presentationTitle": "PageSpeed InSlides Ergebnisse",
       "screenshot": "Screenshot",
       "source": "Quelle: {{link}}",
@@ -125,7 +125,7 @@
   },
   "it": {
     "translation": {
-      "appTitle": "PageSpeed InSlides",
+      "appTitle": "🔥 PageSpeed InSlides",
       "presentationTitle": "Risultati della PageSpeed InSlides",
       "screenshot": "Screenshot",
       "source": "Fonte: {{link}}",
@@ -175,9 +175,9 @@
   },
   "pt": {
     "translation": {
-      "appTitle": "PageSpeed InSlides",
+      "appTitle": "🔥 PageSpeed InSlides",
       "presentationTitle": "Resulados PageSpeed InSlides",
-      "screenshot": "Captura de tela",
+      "screenshot": "Exemplo screenshot",
       "source": "Fonte: {{link}}",
       "requestStatistics": "Estatísticas de petições",
       "requestStatisticsNarrative": "A página contém <em>{{numberResources}} recursos</em> de <em>{{numberHosts}} hosts</em> únicos com um total de <em>{{totalRequestBytes}}</em> de petições.",
@@ -221,7 +221,7 @@
   },
   "es": {
     "translation": {
-      "appTitle": "PageSpeed InSlides",
+      "appTitle": "🔥 PageSpeed InSlides",
       "presentationTitle": "Resultados PageSpeed InSlides",
       "screenshot": "Captura de pantalla",
       "source": "Fuente: {{link}}",
