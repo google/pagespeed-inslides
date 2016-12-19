@@ -50,8 +50,8 @@ html
               option(value='da') Danish
               option(value='nl') Dutch
               option(value='en', selected) English
-              option(value='en-GB') English UK
               option(value='en-AU') English AU 🥚
+              option(value='en-GB') English UK
               option(value='fil') Filipino
               option(value='fi') Finnish
               option(value='fr') French
@@ -127,6 +127,10 @@ html
             url.hostname.replace(/\./g, '_')}${
             url.pathname.length > 1 ? url.pathname.replace(/[\/\.]/g, '-') : ''
             }.html`;
+        const defaultText = downloadButton.textContent;
         downloadButton.innerHTML = '<span class="loading">⏳</span>&nbsp;&nbsp;Preparing Slides…';
+        setTimeout(() => {
+          downloadButton.textContent = defaultText;
+        }, 5000);
         downloadLink.click();
       });

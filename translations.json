@@ -61,6 +61,32 @@
       "thankYou": "Thank you!"
     }
   },
+  "en-AU": {
+    "translation": {
+      "appTitle": "🔥 PageSpeed InSlides",
+      "presentationTitle": "How good ya site is",
+      "screenshot": "Check out this fancy pants",
+      "source": "Where’d I get this crap from? {{link}}",
+      "requestStatistics": "Request Statistics",
+      "requestStatisticsNarrative": "The page has <em>{{numberResources}} thingos</em> from <em>{{numberHosts}} places on the interwebs</em>. This means it’s got <em>{{totalRequestBytes}}</em> in total (heaps of shit mate).",
+      "responseStatistics": "What’s the server jabbering on about?",
+      "responseStatisticsNarrative": "Geez Louise. Your whole bloody site is <em>{{totalSize}}</em>.",
+      "other": "Other crap",
+      "htmlResponseBytes": "Weirdo Web code",
+      "textResponseBytes": "Words ’n’ stuff",
+      "cssResponseBytes": "Code for making it look good",
+      "imageResponseBytes": "Pictures",
+      "javascriptResponseBytes": "JavaScript",
+      "flashResponseBytes": "Flash (what those games were made in)",
+      "otherResponseBytes": "Other crap",
+      "numberStaticResources": "Shit that stays the same",
+      "numberJsResources": "JavaScript",
+      "numberCssResources": "Cascading Style Sheets",
+      "speed": "How quick mate?",
+      "usability": "How good can me nan use it?",
+      "thankYou": "Cheers mate"
+    }
+  },
   "en-GB": {
     "translation": {
     }
