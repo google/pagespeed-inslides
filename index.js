@@ -13,7 +13,9 @@ const slides = require('./slides.js');
 const base64 = require('./base64.js');
 
 base64.encodeAssets()
-.then(encoded => (app.locals.encoded = encoded))
+.then(encoded => {
+  app.locals.encoded = encoded;
+})
 .then(slides.prepare())
 .then(() => {
   // Initialize i18n

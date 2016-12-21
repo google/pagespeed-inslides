@@ -5,6 +5,7 @@ block variables
   - const title = `${t('presentationTitle')}`;
   - const subtitle = `<img src='http://www.google.com/s2/favicons?domain_url=${encodeURIComponent(insights.finalUrl)}'> ${insights.title}`;
   - const date = new Intl.DateTimeFormat(language, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}).format(new Date());
+  - const navigationHelp = `${t('navigationHelp')}`;
 block slides
   style
     include style.css
@@ -336,7 +337,7 @@ block slides
       const displayName = profile.displayName;
       const profileImage = profile.image.url;
       for (const userDisplayName of document.querySelectorAll('.user-display-name')) {
-        userDisplayName.textContent = `${displayName} (${email}) — #{date}`;
+        userDisplayName.textContent = `${displayName} (${email}) — #{date} — #{navigationHelp}`;
       }
       for (const userProfileImage of document.querySelectorAll('.user-profile-image')) {
         userProfileImage.src = profileImage;

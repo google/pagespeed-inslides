@@ -20,14 +20,23 @@ const pageSpeedInsights = {
     return new Promise((resolve, reject) => {
       const DEBUG = params.debug || false;
       if (DEBUG) return resolve(require('./tests/static.json'));
+      let locale;
+      if (params.locale) {
+        if (params.locale === 'en-AU') {
+          // Manual override for the en-AU easter egg
+          locale = 'en';
+        } else {
+          locale = params.locale;
+        }
+      } else {
+        locale = 'en';
+      }
       const PAGESPEEDS_INSIGHTS_URL = `
           https://www.googleapis.com/pagespeedonline/v2/runPagespeed
           ?url=${encodeURIComponent(params.url)}
           &filter_third_party_resources=${
               params.filterThirdPartyResources || false}
-          &locale=${params.locale ?
-              (params.locale === 'en-AU' ? 'en' : params.locale) :
-              'en'}
+          &locale=${locale.replace('-', '_')}
           ${params.rule ? '&rule=' + params.rule : ''}
           &screenshot=${params.screenshot || false}
           ${params.strategy ? '&strategy=' + params.strategy : ''}
@@ -111,17 +120,17 @@ const pageSpeedInsights = {
       const expandTemplateStrings = (arg, format) => {
         let html = '';
         if (arg.type === 'HYPERLINK') {
-          let regEx1 = new RegExp(`\{\{BEGIN_${arg.key}\}\}`, 'g');
+          let regEx1 = new RegExp(`{{BEGIN_${arg.key}}}`, 'g');
           let value1 = `<a href="${arg.value}" title="${arg.value}">`;
           if (!/https:\/\/developers\.google\.com\//.test(arg.value)) {
             formatted.resourceTypes[arg.value] = false;
           }
           format = format.replace(regEx1, value1);
-          let regEx2 = new RegExp(`\{\{END_${arg.key}\}\}`, 'g');
+          let regEx2 = new RegExp(`{{END_${arg.key}}}`, 'g');
           let value2 = '</a>';
           html = format.replace(regEx2, value2);
         } else if (arg.type === 'URL') {
-          let regEx = new RegExp(`\{\{${arg.key}\}\}`, 'g');
+          let regEx = new RegExp(`{{${arg.key}}}`, 'g');
           let value =
               `<a href="${arg.value}" title="${arg.value}">${arg.value}</a>`;
           if (!/https:\/\/developers\.google\.com\//.test(arg.value)) {
@@ -129,7 +138,7 @@ const pageSpeedInsights = {
           }
           html = format.replace(regEx, value);
         } else if (arg.type === 'STRING_LITERAL') {
-          let regEx = new RegExp(`\{\{${arg.key}\}\}`, 'g');
+          let regEx = new RegExp(`{{${arg.key}}}`, 'g');
           let value;
           if (arg.key === 'HTML_TEXT') {
             value = `<pre class="prettyprint" data-lang="html">${arg.value
@@ -196,7 +205,7 @@ const pageSpeedInsights = {
         } else if (arg.type === 'SCREENSHOT') {
 
         } else {
-          let regEx = new RegExp(`\{\{${arg.key}\}\}`, 'g');
+          let regEx = new RegExp(`{{${arg.key}}}`, 'g');
           html = format.replace(regEx, arg.value);
         }
         return html;

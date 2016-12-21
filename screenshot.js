@@ -38,12 +38,11 @@ const screenshot = {
       page.on('onLoadFinished', msg => {
         console.log('onLoadFinished', msg);
       });
-      page.on('onConsoleMessage', (msg) => {
+      page.on('onConsoleMessage', msg => {
         console.log('From Phantom.js (console.log):', msg);
       });
-      page.on('onCallback', (msg) => {
+      page.on('onCallback', msg => {
         console.log('From Phantom.js (phantomCallback): type', typeof msg);
-        callbackData = msg;
       });
       return page.property('settings', {
         userAgent: USER_AGENT,
@@ -105,7 +104,7 @@ const screenshot = {
       pdfViewPortHeight = Math.floor(dpi * heightInInches);
       viewPort = {
         width: pdfViewPortWidth,
-        height:pdfViewPortHeight
+        height: pdfViewPortHeight
       };
       const pageSizeOptions = {
         format: pageSize,
@@ -121,7 +120,7 @@ const screenshot = {
       console.log('Setting DPI to ', dpi);
       return page.property('dpi', dpi);
     }).then(() => {
-      console.log('Start opening')
+      console.log('Start opening');
       return page.open(url);
     }).then(status => {
       console.log('Status', status);
@@ -138,7 +137,7 @@ const screenshot = {
             return resolve(fileName);
           });
         }, 2000);
-      })
+      });
     }).then(() => {
       console.log('Exiting');
       instance.exit();

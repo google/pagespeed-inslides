@@ -58,7 +58,8 @@
       "numberCssResources": "Cascading Style Sheets",
       "speed": "Speed",
       "usability": "Usability",
-      "thankYou": "Thank you!"
+      "thankYou": "Thank you!",
+      "navigationHelp": "Slide Navigation: ⬅️ ➡️"
     }
   },
   "en-AU": {
@@ -84,7 +85,8 @@
       "numberCssResources": "Cascading Style Sheets",
       "speed": "How quick mate?",
       "usability": "How good can me nan use it?",
-      "thankYou": "Cheers mate"
+      "thankYou": "Cheers mate",
+      "navigationHelp": "Slide surfin’: ⬅️ ➡️"
     }
   },
   "en-GB": {
@@ -126,7 +128,8 @@
       "numberCssResources": "Cascading Style Sheets",
       "speed": "Geschwindigkeit",
       "usability": "Benutzerfreundlichkeit",
-      "thankYou": "Vielen Dank!"
+      "thankYou": "Vielen Dank!",
+      "navigationHelp": "Navigation in den Folien: ⬅️ ➡️"
     }
   },
   "el": {
@@ -172,7 +175,8 @@
       "numberCssResources": "Cascading Style Sheets",
       "speed": "Velocità",
       "usability": "Usabilità",
-      "thankYou": "Grazie mille!"
+      "thankYou": "Grazie mille!",
+      "navigationHelp": "Navigazione nelle diapositive: ⬅️ ➡️"
   }
   },
   "ja": {
@@ -199,7 +203,34 @@
     "translation": {
     }
   },
-  "pt": {
+  "pt-BR": {
+    "translation": {
+      "appTitle": "🔥 PageSpeed InSlides",
+      "presentationTitle": "Resulados PageSpeed InSlides",
+      "screenshot": "Exemplo captura de tela",
+      "source": "Fonte: {{link}}",
+      "requestStatistics": "Estatísticas de petições",
+      "requestStatisticsNarrative": "A página contém <em>{{numberResources}} recursos</em> de <em>{{numberHosts}} hosts</em> únicos com um total de <em>{{totalRequestBytes}}</em> de petições.",
+      "responseStatistics": "Estatísticas de respostas",
+      "responseStatisticsNarrative": "O peso total descarregado de todos os recursos da página é de <em>{{totalSize}}</em>.",
+      "other": "Outras",
+      "htmlResponseBytes": "HTML",
+      "textResponseBytes": "Texto",
+      "cssResponseBytes": "Cascading Style Sheets",
+      "imageResponseBytes": "Imagens",
+      "javascriptResponseBytes": "JavaScript",
+      "flashResponseBytes": "Flash",
+      "otherResponseBytes": "Outros conteúdos",
+      "numberStaticResources": "Conteúdos estáticos",
+      "numberJsResources": "JavaScript",
+      "numberCssResources": "Cascading Style Sheets",
+      "speed": "Velocidade",
+      "usability": "Usabilidade",
+      "thankYou": "Obrigado!",
+      "navigationHelp": "Navegação nos slides: ⬅️ ➡️"
+    }
+  },
+  "pt-PT": {
     "translation": {
       "appTitle": "🔥 PageSpeed InSlides",
       "presentationTitle": "Resulados PageSpeed InSlides",
@@ -222,7 +253,8 @@
       "numberCssResources": "Cascading Style Sheets",
       "speed": "Velocidade",
       "usability": "Usabilidade",
-      "thankYou": "Obrigado!"
+      "thankYou": "Obrigado!",
+      "navigationHelp": "Navegação nos slides: ⬅️ ➡️"
     }
   },
   "ro": {
@@ -268,7 +300,8 @@
       "numberCssResources": "Cascading Style Sheets",
       "speed": "Velocidad",
       "usability": "Usabilidad",
-      "thankYou": "¡Muchas gracias!"
+      "thankYou": "¡Muchas gracias!",
+      "navigationHelp": "Navegación en las diapositivas: ⬅️ ➡️"
     }
   },
   "sv": {
