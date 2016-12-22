@@ -1,10 +1,12 @@
+'use strict';
+
 const phantom = require('phantom');
 const randomUserAgent = require('random-fake-useragent');
 
 const USER_AGENT = randomUserAgent.getRandom('Chrome');
 
-function createHAR(url, title, startTime, onLoadTime, onContentLoadTime,
-    resources) {
+const createHAR = (url, title, startTime, onLoadTime, onContentLoadTime,
+    resources) => {
   let entries = [];
 
   resources.forEach(resource => {
@@ -80,7 +82,7 @@ function createHAR(url, title, startTime, onLoadTime, onContentLoadTime,
       entries: entries
     }
   };
-}
+};
 
 const waterfall = {
   create(url) {
