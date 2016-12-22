@@ -9,7 +9,12 @@
     "start": "node index.js"
   },
   "eslintConfig": {
-    "extends": "google"
+    "extends": "google",
+    "env": {
+      "browser": true,
+      "serviceworker": true,
+      "node": true
+    }
   },
   "keywords": [
     "pagespeed",
@@ -30,6 +35,7 @@
     "intl": "^1.2.4",
     "js-beautify": "^1.6.3",
     "node-env-file": "^0.1.8",
+    "perf-cascade": "^0.2.15",
     "phantom": "^2.1.2",
     "prismjs": "^1.5.1",
     "pug": "^2.0.0-beta2",
