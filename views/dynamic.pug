@@ -238,6 +238,13 @@ block slides
         sizeSlideElements();
       });
 
+  slide
+    hgroup
+      h2 #{t('waterfallDiagram')}
+    article
+      style !{insights.waterfall.css}
+      div !{insights.waterfall.svg}
+
   each group, groupName in insights.orderedRules
     if group.length > 0
       slide.title-slide.segue.fill.nobackground(style='background-image: url(data:;base64,' + encoded[Object.keys(encoded)[(Math.floor(Math.random() * 11))]] + ')')

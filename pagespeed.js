@@ -6,8 +6,8 @@ const beautifyCss = require('js-beautify').css;
 const beautifyHtml = require('js-beautify').html;
 const Prism = require('prismjs');
 const randomUserAgent = require('random-fake-useragent');
-
 const request = require('request');
+const waterfall = require('./waterfall.js');
 const env = require('node-env-file');
 env(path.join(__dirname, '.env'));
 
@@ -396,6 +396,14 @@ const pageSpeedInsights = {
         }
         insights.resourceTypes[url].beautified = mapping[url];
       }
+      return insights;
+    });
+  },
+
+  getWaterfall(insights) {
+    return waterfall.create(insights.finalUrl)
+    .then(waterfall => {
+      insights.waterfall = waterfall;
       return insights;
     });
   }

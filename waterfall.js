@@ -2,6 +2,8 @@
 
 const phantom = require('phantom');
 const randomUserAgent = require('random-fake-useragent');
+const path = require('path');
+const fs = require('fs');
 
 const USER_AGENT = randomUserAgent.getRandom('Chrome');
 
@@ -88,6 +90,7 @@ const waterfall = {
   create(url) {
     let page = null;
     let instance = null;
+    let har = null;
 
     let resources = [];
     let startTime;
@@ -155,8 +158,47 @@ const waterfall = {
       title = title_;
       let har = createHAR(url, title, startTime, onLoadTime, onContentLoadTime,
           resources);
-      instance.exit();
       return har;
+    }).then(har_ => {
+      har = har_;
+      page.close();
+      // Start with a fresh page instance
+      return instance.createPage();
+    }).then(page_ => {
+      page = page_;
+      return page.injectJs(path.join(__dirname, 'node_modules', 'perf-cascade',
+          'dist', 'perf-cascade.min.js'));
+    }).then(success => {
+      if (!success) {
+        return Promise.reject(success);
+      }
+      const script = `
+          function() {
+            window.phantomVar = ${JSON.stringify(har)};
+            var svg = perfCascade.fromHar(window.phantomVar.log);
+            document.body.appendChild(svg);
+            return document.body.innerHTML;
+          }`;
+      return page.evaluateJavaScript(script);
+    }).then(svg => {
+      if (!svg) {
+        return Promise.reject(svg);
+      }
+      page.close();
+      instance.exit();
+      return new Promise((resolve, reject) => {
+        const filePath = path.join(__dirname, 'node_modules', 'perf-cascade',
+            'dist', 'perf-cascade.css');
+        fs.readFile(filePath, 'utf8', (err, data) => {
+          if (err) {
+            return reject(err);
+          }
+          return resolve({
+            svg: svg,
+            css: data
+          });
+        });
+      });
     });
   }
 };

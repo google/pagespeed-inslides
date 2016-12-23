@@ -59,6 +59,7 @@ const routes = {
     .then(pageSpeedInsights.format)
     .then(pageSpeedInsights.determineResourceTypes)
     .then(pageSpeedInsights.beautifyResources)
+    .then(pageSpeedInsights.getWaterfall)
     .then(insights => {
       res.render('dynamic', {
         insights: insights,
