@@ -13,7 +13,7 @@ env(path.join(__dirname, '.env'));
 
 const API_KEY = process.env.API_KEY;
 const USER_AGENT = randomUserAgent.getRandom('Chrome');
-const CODE_CHARACTER_LIMIT = 10000;
+const CODE_CHARACTER_LIMIT = 1000;
 
 const pageSpeedInsights = {
   run(params) {
@@ -44,7 +44,8 @@ const pageSpeedInsights = {
       console.log(PAGESPEEDS_INSIGHTS_URL);
       const options = {
         url: PAGESPEEDS_INSIGHTS_URL,
-        json: true
+        json: true,
+        timeout: 30000
       };
       request.get(options, (err, response, data) => {
         if (err || response.statusCode !== 200) {
@@ -298,7 +299,8 @@ const pageSpeedInsights = {
       promises.push(new Promise(resolve => {
         const options = {
           headers: {'User-Agent': USER_AGENT},
-          url: url
+          url: url,
+          timeout: 10000
         };
         // HEAD would be friendlier here, but some Web servers return 403,
         // so going for GET :-/
@@ -355,7 +357,8 @@ const pageSpeedInsights = {
         const options = {
           gzip: true,
           headers: {'User-Agent': USER_AGENT},
-          url: url
+          url: url,
+          timeout: 10000
         };
         request.get(options, (err, response, body) => {
           let beautified = '';
@@ -368,13 +371,16 @@ const pageSpeedInsights = {
             });
           }
           if (/javascript/.test(type)) {
-            beautified = Prism.highlight(beautifyJs(body, beautifyOptions)
+            beautified = Prism.highlight(beautifyJs(
+                body.substr(0, CODE_CHARACTER_LIMIT + 160), beautifyOptions)
                 .substr(0, CODE_CHARACTER_LIMIT), Prism.languages.javascript);
           } else if (/text\/html/.test(type)) {
-            beautified = Prism.highlight(beautifyHtml(body, beautifyOptions)
+            beautified = Prism.highlight(beautifyHtml(
+                body.substr(0, CODE_CHARACTER_LIMIT + 160), beautifyOptions)
                 .substr(0, CODE_CHARACTER_LIMIT), Prism.languages.markup);
           } else if (/text\/css/.test(type)) {
-            beautified = Prism.highlight(beautifyCss(body, beautifyOptions)
+            beautified = Prism.highlight(beautifyCss(
+                body.substr(0, CODE_CHARACTER_LIMIT + 160), beautifyOptions)
                 .substr(0, CODE_CHARACTER_LIMIT), Prism.languages.css);
           }
           return resolve({
@@ -401,11 +407,14 @@ const pageSpeedInsights = {
   },
 
   getWaterfall(insights) {
+    return insights;
+    /*
     return waterfall.create(insights.finalUrl)
     .then(waterfall => {
       insights.waterfall = waterfall;
       return insights;
     });
+    */
   }
 };
 

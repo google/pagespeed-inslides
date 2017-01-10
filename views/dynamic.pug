@@ -238,12 +238,13 @@ block slides
         sizeSlideElements();
       });
 
-  slide
-    hgroup
-      h2 #{t('waterfallDiagram')}
-    article
-      style !{insights.waterfall.css}
-      div !{insights.waterfall.svg}
+  if insights.waterfall
+    slide
+      hgroup
+        h2 #{t('waterfallDiagram')}
+      article
+        style !{insights.waterfall.css}
+        div !{insights.waterfall.svg}
 
   each group, groupName in insights.orderedRules
     if group.length > 0
