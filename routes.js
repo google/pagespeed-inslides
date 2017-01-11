@@ -150,7 +150,8 @@ const routes = {
       pageSize: pageSize,
       pageOrientation: pageOrientation,
       pageMarginInCm: pageMarginInCm
-    }).then(function(fileName) {
+    })
+    .then(function(fileName) {
       const options = {
         root: __dirname
       };

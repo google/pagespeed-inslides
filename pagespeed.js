@@ -317,7 +317,8 @@ const pageSpeedInsights = {
         });
       }));
     }
-    return Promise.all(promises).then(resourceTypes => {
+    return Promise.all(promises)
+    .then(resourceTypes => {
       let i = 0;
       for (const url in insights.resourceTypes) {
         if (!{}.hasOwnProperty.call(insights.resourceTypes, url)) {
@@ -390,7 +391,8 @@ const pageSpeedInsights = {
         });
       }));
     }
-    return Promise.all(promises).then(beautifieds => {
+    return Promise.all(promises)
+    .then(beautifieds => {
       const mapping = {};
       beautifieds.map(beautified => {
         mapping[beautified.url] = beautified.beautified;
@@ -407,14 +409,11 @@ const pageSpeedInsights = {
   },
 
   getWaterfall(insights) {
-    return insights;
-    /*
     return waterfall.create(insights.finalUrl)
     .then(waterfall => {
       insights.waterfall = waterfall;
       return insights;
     });
-    */
   }
 };
 

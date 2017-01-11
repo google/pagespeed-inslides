@@ -1529,9 +1529,9 @@ pend@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/pend/-/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
 
-perf-cascade@^0.2.15:
-  version "0.2.15"
-  resolved "https://registry.yarnpkg.com/perf-cascade/-/perf-cascade-0.2.15.tgz#d07eac5de36550a7a4f348762975e6a2982630d8"
+perf-cascade@^0.2.17:
+  version "0.2.17"
+  resolved "https://registry.yarnpkg.com/perf-cascade/-/perf-cascade-0.2.17.tgz#2b642bb4f25334a02cd30ce8abc68b956266c8b7"
   dependencies:
     tsify "^2.0.3"
     typescript "^2.1.4"

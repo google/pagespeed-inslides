@@ -70,7 +70,7 @@ const createHAR = (url, title, startTime, onLoadTime, onContentLoadTime,
       version: '1.2',
       creator: {
         name: 'PhantomJS',
-        version: '2.1.0'
+        version: '2.1.1'
       },
       pages: [{
         startedDateTime: startTime.toISOString(),
@@ -103,10 +103,12 @@ const waterfall = {
       '--web-security=no',
       '--load-images=true',
       '--local-to-remote-url-access=true'
-    ]).then(instance_ => {
+    ])
+    .then(instance_ => {
       instance = instance_;
       return instance.createPage();
-    }).then(page_ => {
+    })
+    .then(page_ => {
       page = page_;
 
       page.on('onError', msg => {
@@ -140,50 +142,71 @@ const waterfall = {
         localToRemoteUrlAccessEnabled: true,
         webSecurityEnabled: false
       });
-    }).then(() => {
+    })
+    .then(() => {
       return page.open(url);
-    }).then(status => {
+    })
+    .then(status => {
       if (status !== 'success') {
         instance.exit();
         return Promise.reject(status);
       }
       onLoadTime = new Date();
       return page.property('content');
-    }).then(() => {
+    })
+    .then(() => {
       onContentLoadTime = new Date();
       return page.evaluate(function() {
         return document.title;
       });
-    }).then(title_ => {
+    })
+    .then(title_ => {
       title = title_;
-      let har = createHAR(url, title, startTime, onLoadTime, onContentLoadTime,
+      return createHAR(url, title, startTime, onLoadTime, onContentLoadTime,
           resources);
-      return har;
-    }).then(har_ => {
+    })
+    .then(har_ => {
       har = har_;
       page.close();
       // Start with a fresh page instance
       return instance.createPage();
-    }).then(page_ => {
+    })
+    .then(page_ => {
       page = page_;
       return page.injectJs(path.join(__dirname, 'node_modules', 'perf-cascade',
-          'dist', 'perf-cascade.min.js'));
-    }).then(success => {
+          'dist', 'perf-cascade.js'));
+    })
+    .then(success => {
       if (!success) {
         return Promise.reject(success);
       }
       const script = `
           function() {
+            var body = document.body;
+
+            var output = document.createElement('div');
+            output.id = 'output';
+            body.appendChild(output);
+
+            var legendHolder = document.createElement('div');
+            output.appendChild(legendHolder);
+
             window.phantomVar = ${JSON.stringify(har)};
-            var svg = perfCascade.fromHar(window.phantomVar.log);
-            document.body.appendChild(svg);
-            return document.body.innerHTML;
+            var options = {
+              legendHolder: legendHolder,
+              leftColumnWith: 30
+            };
+            var svg = perfCascade.fromHar(window.phantomVar.log, options);
+            output.appendChild(svg);
+            return output.innerHTML;
           }`;
       return page.evaluateJavaScript(script);
-    }).then(svg => {
+    })
+    .then(svg => {
       if (!svg) {
         return Promise.reject(svg);
       }
+      svg = svg.replace(/svg:svg/g, 'svg');
       page.close();
       instance.exit();
       return new Promise((resolve, reject) => {
@@ -199,6 +222,11 @@ const waterfall = {
           });
         });
       });
+    })
+    .catch(e => {
+      if (e) {
+        console.log(e);
+      }
     });
   }
 };

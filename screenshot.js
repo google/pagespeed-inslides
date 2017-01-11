@@ -25,11 +25,13 @@ const screenshot = {
       '--web-security=no',
       '--load-images=true',
       '--local-to-remote-url-access=true'
-    ]).then(instance_ => {
+    ])
+    .then(instance_ => {
       console.log('Creating instance');
       instance = instance_;
       return instance.createPage();
-    }).then(page_ => {
+    })
+    .then(page_ => {
       console.log('Creating page');
       page = page_;
       page.on('onError', msg => {
@@ -51,7 +53,8 @@ const screenshot = {
         localToRemoteUrlAccessEnabled: true,
         webSecurityEnabled: false
       });
-    }).then(() => {
+    })
+    .then(() => {
       // Adapted from http://stackoverflow.com/questions/22017746/
       pageSize = (pageSize || 'A4');
       pageOrientation = (pageOrientation || 'portrait');
@@ -113,16 +116,20 @@ const screenshot = {
       };
       console.log('Setting page size to ' + JSON.stringify(pageSizeOptions));
       return page.property('paperSize', pageSizeOptions);
-    }).then(() => {
+    })
+    .then(() => {
       console.log('Setting view port to ' + JSON.stringify(viewPort));
       return page.property('viewportSize', viewPort);
-    }).then(() => {
+    })
+    .then(() => {
       console.log('Setting DPI to ', dpi);
       return page.property('dpi', dpi);
-    }).then(() => {
+    })
+    .then(() => {
       console.log('Start opening');
       return page.open(url);
-    }).then(status => {
+    })
+    .then(status => {
       console.log('Status', status);
       if (status !== 'success') {
         return Promise.reject(Error('Can\'t open page ' + url + '. Status: ' +
@@ -133,12 +140,14 @@ const screenshot = {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           console.log('Start rendering');
-          page.render(fileName).then(() => {
+          page.render(fileName)
+          .then(() => {
             return resolve(fileName);
           });
         }, 2000);
       });
-    }).then(() => {
+    })
+    .then(() => {
       console.log('Exiting');
       instance.exit();
       page.close();

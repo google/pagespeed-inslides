@@ -19,6 +19,7 @@ block slides
       p
         img.user-profile-image
         span.user-display-name
+  script(src='https://micmro.github.io/PerfCascade/src/perf-cascade.min.js')
   script(src='https://www.gstatic.com/charts/loader.js')
   - const link = `<a href='${insights.finalUrl}'>${URL.parse(insights.finalUrl).hostname}</a>`;
   if insights.screenshot
@@ -244,7 +245,14 @@ block slides
         h2 #{t('waterfallDiagram')}
       article
         style !{insights.waterfall.css}
-        div !{insights.waterfall.svg}
+        style.
+          .resource-legend li:before {
+            position: initial;
+          }
+          .resource-legend {
+            margin-bottom: 2em;
+          }
+        div#output !{insights.waterfall.svg}
 
   each group, groupName in insights.orderedRules
     if group.length > 0
