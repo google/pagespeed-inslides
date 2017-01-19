@@ -2,10 +2,10 @@ extends slides
 
 block variables
   - const favicon = 'https://www.google.com/images/icons/product/pagespeed-64.png';
-  - const title = `${t('presentationTitle')}`;
-  - const subtitle = `<img src='http://www.google.com/s2/favicons?domain_url=${encodeURIComponent(insights.finalUrl)}'> ${insights.title}`;
+  - const title = `${t('presentationTitle').replace(/"/g, '&quot;')}`;
+  - const subtitle = `<img src='http://www.google.com/s2/favicons?domain_url=${encodeURIComponent(insights.finalUrl)}'> ${insights.title.replace(/"/g, '&quot;')}`;
   - const date = new Intl.DateTimeFormat(language, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}).format(new Date());
-  - const navigationHelp = `${t('navigationHelp')}`;
+  - const navigationHelp = `${t('navigationHelp').replace(/"/g, '&quot;')}`;
 block slides
   style
     include style.css
