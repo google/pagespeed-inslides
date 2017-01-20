@@ -87,7 +87,8 @@
       "speed": "How quick mate?",
       "usability": "How good can me nan use it?",
       "thankYou": "Cheers mate",
-      "navigationHelp": "Slide surfin’: ⬅️ ➡️"
+      "navigationHelp": "Slide surfin’: ⬅️ ➡️",
+      "waterfallDiagram": "Waterfall Crap"
     }
   },
   "en-GB": {
@@ -130,7 +131,8 @@
       "speed": "Geschwindigkeit",
       "usability": "Benutzerfreundlichkeit",
       "thankYou": "Vielen Dank!",
-      "navigationHelp": "Navigation in den Folien: ⬅️ ➡️"
+      "navigationHelp": "Navigation in den Folien: ⬅️ ➡️",
+      "waterfallDiagram": "Wasserfalldiagramm"
     }
   },
   "el": {
@@ -177,7 +179,8 @@
       "speed": "Velocità",
       "usability": "Usabilità",
       "thankYou": "Grazie mille!",
-      "navigationHelp": "Navigazione nelle diapositive: ⬅️ ➡️"
+      "navigationHelp": "Navigazione nelle diapositive: ⬅️ ➡️",
+      "waterfallDiagram": "Diagramma waterfall"
   }
   },
   "ja": {
@@ -228,7 +231,8 @@
       "speed": "Velocidade",
       "usability": "Usabilidade",
       "thankYou": "Obrigado!",
-      "navigationHelp": "Navegação nos slides: ⬅️ ➡️"
+      "navigationHelp": "Navegação nos slides: ⬅️ ➡️",
+      "waterfallDiagram": "Diagramme waterfall"
     }
   },
   "pt-PT": {
@@ -255,7 +259,8 @@
       "speed": "Velocidade",
       "usability": "Usabilidade",
       "thankYou": "Obrigado!",
-      "navigationHelp": "Navegação nos slides: ⬅️ ➡️"
+      "navigationHelp": "Navegação nos slides: ⬅️ ➡️",
+      "waterfallDiagram": "Diagrama waterfall"
     }
   },
   "ro": {
@@ -302,7 +307,8 @@
       "speed": "Velocidad",
       "usability": "Usabilidad",
       "thankYou": "¡Muchas gracias!",
-      "navigationHelp": "Navegación en las diapositivas: ⬅️ ➡️"
+      "navigationHelp": "Navegación en las diapositivas: ⬅️ ➡️",
+      "waterfallDiagram": "Diagrama waterfall"
     }
   },
   "sv": {
