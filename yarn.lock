@@ -640,15 +640,9 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-google@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-google/-/eslint-config-google-0.6.0.tgz#c542ec18fb3247983ac16bba31662d01625b763f"
-  dependencies:
-    eslint-config-xo "^0.13.0"
-
-eslint-config-xo@^0.13.0:
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-xo/-/eslint-config-xo-0.13.0.tgz#f916765432ba67d2fc7a7177b8bcfef3f6eb0564"
+eslint-config-google@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-google/-/eslint-config-google-0.7.1.tgz#5598f8498e9e078420f34b80495b8d959f651fb2"
 
 eslint@^3.1.1:
   version "3.11.1"
@@ -1031,9 +1025,9 @@ i18next-express-middleware@^1.0.1:
   dependencies:
     cookies "0.6.1"
 
-i18next@^3.4.1:
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-3.5.2.tgz#930390d5c318ceaa4858b52dd0e40e6b203f9f41"
+i18next@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-7.0.0.tgz#8944ec20a31244fe85fa464350f48373efea3103"
 
 ignore@^3.2.0:
   version "3.2.0"
@@ -1497,9 +1491,9 @@ pend@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/pend/-/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
 
-perf-cascade@^0.2.23:
-  version "0.2.23"
-  resolved "https://registry.yarnpkg.com/perf-cascade/-/perf-cascade-0.2.23.tgz#05029c05902752037cf2c1155814b75bc8ae7fbb"
+perf-cascade@^0.3.6:
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/perf-cascade/-/perf-cascade-0.3.6.tgz#adb28f3371b65ba8bad650df6d0e15532cd8178c"
 
 phantom@^2.1.2:
   version "2.1.21"
@@ -1507,6 +1501,14 @@ phantom@^2.1.2:
   dependencies:
     linerstream "^0.1.4"
     phantomjs-prebuilt "^2.1.4"
+    winston "^2.2.0"
+
+phantom@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/phantom/-/phantom-4.0.0.tgz#007e45d454ceeb8f074cad993ed44c2193f24d79"
+  dependencies:
+    phantomjs-prebuilt "^2.1.4"
+    split "^1.0.0"
     winston "^2.2.0"
 
 phantomjs-prebuilt@^2.1.4:
@@ -1913,6 +1915,12 @@ source-map@~0.5.1:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
 
+split@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/split/-/split-1.0.0.tgz#c4395ce683abcd254bc28fe1dabb6e5c27dcffae"
+  dependencies:
+    through "2"
+
 sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
@@ -2004,7 +2012,7 @@ throttleit@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/throttleit/-/throttleit-1.0.0.tgz#9e785836daf46743145a5984b6268d828528ac6c"
 
-through@^2.3.6:
+through@2, through@^2.3.6:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
 

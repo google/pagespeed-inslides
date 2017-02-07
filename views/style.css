@@ -146,6 +146,10 @@ pre.prettyprint {
   background-position: 0 0, 15px 15px;
 }
 
+#output {
+  font-size: 12pt;
+}
+
 li a::before {
   content: "📄 Document";
   color: darkgray;
