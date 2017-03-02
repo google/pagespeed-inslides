@@ -13,6 +13,10 @@ slides > slide {
   margin-top: calc(95vw / (900 / 700) / -2);
 }
 
+summary {
+  outline: none;
+}
+
 article {
   width: 100%;
   height: 100%;

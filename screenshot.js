@@ -24,26 +24,26 @@ const screenshot = {
       '--ignore-ssl-errors=yes',
       '--web-security=no',
       '--load-images=true',
-      '--local-to-remote-url-access=true'
+      '--local-to-remote-url-access=true',
     ])
-    .then(instance_ => {
+    .then((instance_) => {
       console.log('Creating instance');
       instance = instance_;
       return instance.createPage();
     })
-    .then(page_ => {
+    .then((page_) => {
       console.log('Creating page');
       page = page_;
-      page.on('onError', msg => {
+      page.on('onError', (msg) => {
         console.log('onError', msg);
       });
-      page.on('onLoadFinished', msg => {
+      page.on('onLoadFinished', (msg) => {
         console.log('onLoadFinished', msg);
       });
-      page.on('onConsoleMessage', msg => {
+      page.on('onConsoleMessage', (msg) => {
         console.log('From Phantom.js (console.log):', msg);
       });
-      page.on('onCallback', msg => {
+      page.on('onCallback', (msg) => {
         console.log('From Phantom.js (phantomCallback): type', typeof msg);
       });
       return page.property('settings', {
@@ -51,7 +51,7 @@ const screenshot = {
         javascriptEnabled: true,
         loadImages: true,
         localToRemoteUrlAccessEnabled: true,
-        webSecurityEnabled: false
+        webSecurityEnabled: false,
       });
     })
     .then(() => {
@@ -107,12 +107,12 @@ const screenshot = {
       pdfViewPortHeight = Math.floor(dpi * heightInInches);
       viewPort = {
         width: pdfViewPortWidth,
-        height: pdfViewPortHeight
+        height: pdfViewPortHeight,
       };
       const pageSizeOptions = {
         format: pageSize,
         orientation: pageOrientation,
-        margin: pageMarginInCm + 'cm'
+        margin: pageMarginInCm + 'cm',
       };
       console.log('Setting page size to ' + JSON.stringify(pageSizeOptions));
       return page.property('paperSize', pageSizeOptions);
@@ -129,7 +129,7 @@ const screenshot = {
       console.log('Start opening');
       return page.open(url);
     })
-    .then(status => {
+    .then((status) => {
       console.log('Status', status);
       if (status !== 'success') {
         return Promise.reject(Error('Can\'t open page ' + url + '. Status: ' +
@@ -152,10 +152,10 @@ const screenshot = {
       instance.exit();
       page.close();
       return Promise.resolve(fileName);
-    }).catch(err => {
+    }).catch((err) => {
       console.log(err);
     });
-  }
+  },
 };
 
 module.exports = screenshot;

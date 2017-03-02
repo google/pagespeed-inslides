@@ -11,7 +11,7 @@ const createHAR = (url, title, startTime, onLoadTime, onContentLoadTime,
     resources) => {
   let entries = [];
 
-  resources.forEach(resource => {
+  resources.forEach((resource) => {
     const {request, startReply, endReply} = resource;
     if (!request || !startReply || !endReply) {
       return;
@@ -31,25 +31,28 @@ const createHAR = (url, title, startTime, onLoadTime, onContentLoadTime,
         method: request.method,
         url: request.url,
         httpVersion: 'unknown', // Check if we can get this
-        cookies: request.cookies,
-        headers: request.headers,
-        queryString: request.queryString,
+        cookies: request.cookies || [],
+        headers: request.headers || [],
+        queryString: request.queryString || [],
+        postData: request.postData || {},
         headersSize: -1,
-        bodySize: -1
+        bodySize: -1,
+        comment: '',
       },
       response: {
         status: endReply.status,
         statusText: endReply.statusText,
         httpVersion: 'unknown', // Check if we can get this
-        cookies: endReply.cookies,
-        headers: endReply.headers,
-        redirectURL: endReply.redirectURL,
-        headersSize: -1,
-        bodySize: startReply.bodySize,
+        cookies: endReply.cookies || [],
+        headers: endReply.headers || [],
         content: {
           size: startReply.bodySize,
-          mimeType: endReply.contentType
-        }
+          mimeType: endReply.contentType || '',
+        },
+        redirectURL: endReply.redirectURL || '',
+        headersSize: -1,
+        bodySize: startReply.bodySize,
+        comment: '',
       },
       cache: {},
       timings: {
@@ -59,9 +62,9 @@ const createHAR = (url, title, startTime, onLoadTime, onContentLoadTime,
         send: 0,
         wait: startReply.time - request.time,
         receive: endReply.time - startReply.time,
-        ssl: -1
+        ssl: -1,
       },
-      pageref: url
+      pageref: url,
     });
   });
 
@@ -70,7 +73,7 @@ const createHAR = (url, title, startTime, onLoadTime, onContentLoadTime,
       version: '1.2',
       creator: {
         name: 'PhantomJS',
-        version: '2.1.1'
+        version: '2.1.1',
       },
       pages: [{
         startedDateTime: startTime.toISOString(),
@@ -78,11 +81,11 @@ const createHAR = (url, title, startTime, onLoadTime, onContentLoadTime,
         title: title,
         pageTimings: {
           onLoad: onLoadTime - startTime,
-          onContentLoad: onContentLoadTime - startTime
-        }
+          onContentLoad: onContentLoadTime - startTime,
+        },
       }],
-      entries: entries
-    }
+      entries: entries,
+    },
   };
 };
 
@@ -102,16 +105,16 @@ const waterfall = {
       '--ignore-ssl-errors=yes',
       '--web-security=no',
       '--load-images=true',
-      '--local-to-remote-url-access=true'
+      '--local-to-remote-url-access=true',
     ])
-    .then(instance_ => {
+    .then((instance_) => {
       instance = instance_;
       return instance.createPage();
     })
-    .then(page_ => {
+    .then((page_) => {
       page = page_;
 
-      page.on('onError', msg => {
+      page.on('onError', (msg) => {
         return Promise.reject(msg);
       });
 
@@ -119,15 +122,15 @@ const waterfall = {
         startTime = new Date();
       });
 
-      page.on('onResourceRequested', req => {
+      page.on('onResourceRequested', (req) => {
         resources[req.id] = {
           request: req,
           startReply: null,
-          endReply: null
+          endReply: null,
         };
       });
 
-      page.on('onResourceReceived', res => {
+      page.on('onResourceReceived', (res) => {
         if (res.stage === 'start') {
           resources[res.id].startReply = res;
         } else if (res.stage === 'end') {
@@ -140,13 +143,13 @@ const waterfall = {
         javascriptEnabled: true,
         loadImages: true,
         localToRemoteUrlAccessEnabled: true,
-        webSecurityEnabled: false
+        webSecurityEnabled: false,
       });
     })
     .then(() => {
       return page.open(url);
     })
-    .then(status => {
+    .then((status) => {
       if (status !== 'success') {
         instance.exit();
         return Promise.reject(status);
@@ -160,23 +163,23 @@ const waterfall = {
         return document.title;
       });
     })
-    .then(title_ => {
+    .then((title_) => {
       title = title_;
       return createHAR(url, title, startTime, onLoadTime, onContentLoadTime,
           resources);
     })
-    .then(har_ => {
+    .then((har_) => {
       har = har_;
       page.close();
       // Start with a fresh page instance
       return instance.createPage();
     })
-    .then(page_ => {
+    .then((page_) => {
       page = page_;
       return page.injectJs(path.join(__dirname, 'node_modules', 'perf-cascade',
           'dist', 'perf-cascade.js'));
     })
-    .then(success => {
+    .then((success) => {
       if (!success) {
         return Promise.reject(success);
       }
@@ -202,7 +205,7 @@ const waterfall = {
           }`;
       return page.evaluateJavaScript(script);
     })
-    .then(svg => {
+    .then((svg) => {
       if (!svg) {
         return Promise.reject(svg);
       }
@@ -218,17 +221,17 @@ const waterfall = {
           }
           return resolve({
             svg: svg,
-            css: data
+            css: data,
           });
         });
       });
     })
-    .catch(e => {
+    .catch((e) => {
       if (e) {
         console.log(e);
       }
     });
-  }
+  },
 };
 
 module.exports = waterfall;

@@ -6,14 +6,16 @@ const i18next = require('i18next');
 const middleware = require('i18next-express-middleware');
 const path = require('path');
 const app = express();
-app.use(compression());
+
+app.use(compression({threshold: 0}));
+app.use(require('helmet')());
 
 const routes = require('./routes.js');
 const slides = require('./slides.js');
 const base64 = require('./base64.js');
 
 base64.encodeAssets()
-.then(encoded => {
+.then((encoded) => {
   app.locals.encoded = encoded;
 })
 .then(slides.prepare())
@@ -24,8 +26,8 @@ base64.encodeAssets()
     resources: require('./translations.json'),
     detection: {
       order: ['querystring'],
-      lookupQuerystring: 'locale'
-    }
+      lookupQuerystring: 'locale',
+    },
   };
   i18next
     .use(middleware.LanguageDetector)
@@ -62,6 +64,6 @@ base64.encodeAssets()
     console.log('PageSpeed InSlides™ running at http://%s:%s', host, port);
   });
 })
-.catch(err => {
+.catch((err) => {
   console.log(err.stack);
 });

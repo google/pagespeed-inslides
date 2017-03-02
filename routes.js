@@ -17,10 +17,10 @@ const routes = {
   getPageSpeedRaw(req, res) {
     const query = req.query;
     return pageSpeedInsights.run(query)
-    .then(raw => {
+    .then((raw) => {
       return res.send(raw);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).render('error', {error: err.stack});
     });
   },
@@ -31,10 +31,10 @@ const routes = {
     .then(pageSpeedInsights.format)
     .then(pageSpeedInsights.determineResourceTypes)
     .then(pageSpeedInsights.beautifyResources)
-    .then(insights => {
+    .then((insights) => {
       return res.send(insights);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).render('error', {error: err.stack});
     });
   },
@@ -45,10 +45,10 @@ const routes = {
     .then(pageSpeedInsights.format)
     .then(pageSpeedInsights.determineResourceTypes)
     .then(pageSpeedInsights.beautifyResources)
-    .then(insights => {
+    .then((insights) => {
       res.render('report', {insights: insights});
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).render('error', {error: err.stack});
     });
   },
@@ -60,16 +60,16 @@ const routes = {
     .then(pageSpeedInsights.determineResourceTypes)
     .then(pageSpeedInsights.beautifyResources)
     .then(pageSpeedInsights.getWaterfall)
-    .then(insights => {
+    .then((insights) => {
       res.render('dynamic', {
         insights: insights,
         filesize: filesize,
         URL: URL,
         encoded: req.app.locals.encoded,
-        __dirname: __dirname
+        __dirname: __dirname,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).render('error', {error: err.stack});
     });
   },
@@ -88,7 +88,7 @@ const routes = {
       jpeg: true,
       jpg: true,
       gif: true,
-      pdf: true
+      pdf: true,
     };
     const format = req.query.format ? req.query.format.toLowerCase() : 'pdf';
     if (!supportedFormats[format]) {
@@ -104,7 +104,7 @@ const routes = {
       }
       viewPort = {
         width: parseInt(viewPort.split(/x/i)[0], 10),
-        height: parseInt(viewPort.split(/x/i)[1], 10)
+        height: parseInt(viewPort.split(/x/i)[1], 10),
       };
     }
 
@@ -115,7 +115,7 @@ const routes = {
       A3: true,
       A4: true,
       A5: true,
-      Tabloid: true
+      Tabloid: true,
     };
     const pageSize = req.query.pageSize;
     if (pageSize) {
@@ -149,11 +149,11 @@ const routes = {
       viewPort: viewPort,
       pageSize: pageSize,
       pageOrientation: pageOrientation,
-      pageMarginInCm: pageMarginInCm
+      pageMarginInCm: pageMarginInCm,
     })
     .then(function(fileName) {
       const options = {
-        root: __dirname
+        root: __dirname,
       };
       return res.sendFile(fileName, options, function(err) {
         console.log('Deleting ' + fileName);
@@ -166,7 +166,7 @@ const routes = {
     }).catch(function(err) {
       return res.status(400).send('Uncaught error ' + err);
     });
-  }
+  },
 };
 
 module.exports = routes;

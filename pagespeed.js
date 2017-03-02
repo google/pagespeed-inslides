@@ -45,7 +45,7 @@ const pageSpeedInsights = {
       const options = {
         url: PAGESPEEDS_INSIGHTS_URL,
         json: true,
-        timeout: 30000
+        timeout: 30000,
       };
       request.get(options, (err, response, data) => {
         if (err || response.statusCode !== 200) {
@@ -72,7 +72,7 @@ const pageSpeedInsights = {
         title: insights.title,
         finalUrl: insights.id,
         screenshot: screenshot,
-        resourceTypes: {}
+        resourceTypes: {},
       };
 
       const scores = {};
@@ -96,13 +96,13 @@ const pageSpeedInsights = {
         if (/ResponseBytes$/.test(pageStat)) {
           let localPageStat = {
             name: pageStat,
-            weight: parseInt(insights.pageStats[pageStat], 10)
+            weight: parseInt(insights.pageStats[pageStat], 10),
           };
           responseBytes.push(localPageStat);
         } else if (/^number\w+Resources$/.test(pageStat)) {
           let localPageStat = {
             name: pageStat,
-            weight: parseInt(insights.pageStats[pageStat], 10)
+            weight: parseInt(insights.pageStats[pageStat], 10),
           };
           numberResources.push(localPageStat);
         } else {
@@ -162,7 +162,7 @@ const pageSpeedInsights = {
                   <img class="screenshot"
                       style="width:${width}px; height:${height}px;"
                       src="data:${mimeType};base64,${data}">
-                  ${arg.rects && arg.rects.map(rect => {
+                  ${arg.rects && arg.rects.map((rect) => {
                     const pageRect = insights.screenshot.pageRect;
                     const screenshotWidthRatio = width /
                         (pageRect ? pageRect.width : width);
@@ -180,7 +180,7 @@ const pageSpeedInsights = {
                     offset += rect.height * screenshotHeightRatio;
                     return html;
                   }).join('')}
-                  ${arg.secondary_rects && arg.secondary_rects.map(rect => {
+                  ${arg.secondary_rects && arg.secondary_rects.map((rect) => {
                     const pageRect = insights.screenshot.pageRect;
                     const screenshotWidthRatio = width /
                         (pageRect ? pageRect.width : width);
@@ -222,7 +222,7 @@ const pageSpeedInsights = {
           if (!{}.hasOwnProperty.call(ruleResults, ruleName)) {
             continue;
           }
-          let contained = (ruleResults[ruleName].groups.map(g => {
+          let contained = (ruleResults[ruleName].groups.map((g) => {
             return g.toLowerCase();
           }).indexOf(groupName) !== -1);
           if (contained) {
@@ -231,39 +231,39 @@ const pageSpeedInsights = {
               let expandedRule = {
                 name: ruleName,
                 localizedRuleName: rule.localizedRuleName,
-                ruleImpact: rule.ruleImpact
+                ruleImpact: rule.ruleImpact,
               };
               if (rule.summary) {
                 let summary = rule.summary;
                 let format = summary.format;
                 let args = summary.args || [];
-                args.forEach(arg => {
+                args.forEach((arg) => {
                   format = expandTemplateStrings(arg, format);
                 });
                 expandedRule.html = format;
               }
               if (rule.urlBlocks) {
                 expandedRule.urlBlocks = [];
-                rule.urlBlocks.forEach(urlBlock => {
+                rule.urlBlocks.forEach((urlBlock) => {
                   let urlBlockObject = {};
                   let header = urlBlock.header;
                   let format = header.format;
                   let args = header.args || [];
-                  args.forEach(arg => {
+                  args.forEach((arg) => {
                     format = expandTemplateStrings(arg, format);
                   });
                   urlBlockObject.html = format;
                   urlBlockObject.urls = [];
                   if (urlBlock.urls) {
-                    urlBlock.urls.forEach(url => {
+                    urlBlock.urls.forEach((url) => {
                       let result = url.result;
                       let format = result.format;
                       let args = result.args || [];
-                      args.forEach(arg => {
+                      args.forEach((arg) => {
                         format = expandTemplateStrings(arg, format);
                       });
                       urlBlockObject.urls.push({
-                        html: format
+                        html: format,
                       });
                     });
                   }
@@ -296,11 +296,11 @@ const pageSpeedInsights = {
       if (!{}.hasOwnProperty.call(insights.resourceTypes, url)) {
         continue;
       }
-      promises.push(new Promise(resolve => {
+      promises.push(new Promise((resolve) => {
         const options = {
           headers: {'User-Agent': USER_AGENT},
           url: url,
-          timeout: 10000
+          timeout: 10000,
         };
         // HEAD would be friendlier here, but some Web servers return 403,
         // so going for GET :-/
@@ -312,13 +312,13 @@ const pageSpeedInsights = {
           // Fail silently if no content-type header is set
           return resolve({
             'content-type': response.headers['content-type'] || false,
-            'content-length': response.headers['content-length'] || body.length
+            'content-length': response.headers['content-length'] || body.length,
           });
         });
       }));
     }
     return Promise.all(promises)
-    .then(resourceTypes => {
+    .then((resourceTypes) => {
       let i = 0;
       for (const url in insights.resourceTypes) {
         if (!{}.hasOwnProperty.call(insights.resourceTypes, url)) {
@@ -327,7 +327,7 @@ const pageSpeedInsights = {
         if (resourceTypes[i]) {
           insights.resourceTypes[url] = {
             type: resourceTypes[i]['content-type'],
-            size: resourceTypes[i]['content-length']
+            size: resourceTypes[i]['content-length'],
           };
         }
         i++;
@@ -343,7 +343,7 @@ const pageSpeedInsights = {
       indent_size: 2,
       no_preserve_newlines: true,
       wrap_line_length: 80,
-      end_with_newline: true
+      end_with_newline: true,
     };
     /* eslint-enable camelcase */
     for (const url in insights.resourceTypes) {
@@ -354,12 +354,12 @@ const pageSpeedInsights = {
       if (!/(?:text\/css|javascript|text\/html)/.test(type)) {
         continue;
       }
-      promises.push(new Promise(resolve => {
+      promises.push(new Promise((resolve) => {
         const options = {
           gzip: true,
           headers: {'User-Agent': USER_AGENT},
           url: url,
-          timeout: 10000
+          timeout: 10000,
         };
         request.get(options, (err, response, body) => {
           let beautified = '';
@@ -368,7 +368,7 @@ const pageSpeedInsights = {
             // Fail silently if the resource is not available
             return resolve({
               url: url,
-              beautified: beautified
+              beautified: beautified,
             });
           }
           if (/javascript/.test(type)) {
@@ -386,15 +386,15 @@ const pageSpeedInsights = {
           }
           return resolve({
             url: url,
-            beautified: beautified
+            beautified: beautified,
           });
         });
       }));
     }
     return Promise.all(promises)
-    .then(beautifieds => {
+    .then((beautifieds) => {
       const mapping = {};
-      beautifieds.map(beautified => {
+      beautifieds.map((beautified) => {
         mapping[beautified.url] = beautified.beautified;
         return true;
       });
@@ -410,11 +410,11 @@ const pageSpeedInsights = {
 
   getWaterfall(insights) {
     return waterfall.create(insights.finalUrl)
-    .then(waterfall => {
+    .then((waterfall) => {
       insights.waterfall = waterfall;
       return insights;
     });
-  }
+  },
 };
 
 module.exports = pageSpeedInsights;

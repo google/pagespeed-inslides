@@ -10,7 +10,7 @@ const UglifyJS = require('uglify-js');
 const slides = {
   prepare() {
     return html5Slides.load()
-    .then(html => {
+    .then((html) => {
       return new Promise((resolve, reject) => {
         // Temporarily turn <pre> into <pre-fix-me> due to
         // https://github.com/donpark/html2jade/issues/99
@@ -20,7 +20,7 @@ const slides = {
         html = html.replace(
             /(<pre-fix-me.*?>)([\s\S]+?)(<\/pre-fix-me>)/gm,
             (_ignore1, preFixMeOpen, code, preFixMeClose) => {
-              return `${preFixMeOpen}${code.split(/\n/g).map(line => {
+              return `${preFixMeOpen}${code.split(/\n/g).map((line) => {
                 return `<!--_COMMENT_${line.replace(/>\s+</g, '> <')
                     .replace(/^(\s*)/g, (_ignore2, whitespace) => {
                       return Array(whitespace.length + 1).join('_SPACE_');
@@ -61,7 +61,7 @@ const slides = {
           // Add variables block
           jade = `block variables\n${jade}`;
           const fileName = path.join(__dirname, 'views/slides.pug');
-          fs.writeFile(fileName, jade, 'utf8', err => {
+          fs.writeFile(fileName, jade, 'utf8', (err) => {
             if (err) {
               return reject(err);
             }
@@ -71,7 +71,7 @@ const slides = {
         });
       });
     });
-  }
+  },
 };
 
 module.exports = slides;
