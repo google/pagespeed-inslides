@@ -1,6 +1,7 @@
 .env
 .DS_Store
 ._*
+*.log
 node_modules/
 screenshots/
 views/slides.pug

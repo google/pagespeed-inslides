@@ -18,26 +18,26 @@
   "license": "Apache-2.0",
   "dependencies": {
     "compression": "^1.6.2",
-    "express": "^4.15.0",
-    "filesize": "^3.5.5",
-    "helmet": "^3.4.1",
+    "express": "^4.15.2",
+    "filesize": "^3.5.6",
+    "helmet": "^3.5.0",
     "html2jade": "^0.8.6",
     "html5-slides": "^1.1.6",
-    "i18next": "^7.1.1",
-    "i18next-express-middleware": "^1.0.2",
+    "i18next": "^7.1.2",
+    "i18next-express-middleware": "^1.0.3",
     "intl": "^1.2.5",
-    "js-beautify": "^1.6.11",
+    "js-beautify": "^1.6.12",
     "node-env-file": "^0.1.8",
-    "perf-cascade": "^0.8.0",
-    "phantom": "^4.0.0",
+    "perf-cascade": "^1.0.0",
+    "phantom": "^4.0.1",
     "prismjs": "^1.6.0",
     "pug": "^2.0.0-beta2",
     "random-fake-useragent": "^0.1.0",
-    "request": "^2.79.0",
-    "uglify-js": "^2.8.4"
+    "request": "^2.81.0",
+    "uglify-js": "^2.8.14"
   },
   "devDependencies": {
-    "eslint": "^3.16.1",
+    "eslint": "^3.18.0",
     "eslint-config-google": "^0.7.1"
   },
   "eslintConfig": {
