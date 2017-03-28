@@ -6,6 +6,7 @@ const URL = require('url');
 global.Intl = require('intl');
 
 const pageSpeedInsights = require('./pagespeed.js');
+const mobileFriendlyTest = require('./mobilefriendly.js');
 const screenshot = require('./screenshot.js');
 
 const routes = {
@@ -55,12 +56,18 @@ const routes = {
 
   getPageSpeedSlides(req, res) {
     const query = req.query;
+    let insights;
     return pageSpeedInsights.run(query)
     .then(pageSpeedInsights.format)
     .then(pageSpeedInsights.determineResourceTypes)
     .then(pageSpeedInsights.beautifyResources)
     .then(pageSpeedInsights.getWaterfall)
-    .then((insights) => {
+    .then((insights_) => {
+      insights = insights_;
+      return mobileFriendlyTest.run(query);
+    })
+    .then((mobileFriendlyResults) => {
+      insights.mobileFriendly = mobileFriendlyResults;
       res.render('dynamic', {
         insights: insights,
         filesize: filesize,

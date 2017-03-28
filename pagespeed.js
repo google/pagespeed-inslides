@@ -45,7 +45,7 @@ const pageSpeedInsights = {
       const options = {
         url: PAGESPEEDS_INSIGHTS_URL,
         json: true,
-        timeout: 30000,
+        timeout: 60000,
       };
       request.get(options, (err, response, data) => {
         if (err || response.statusCode !== 200) {
