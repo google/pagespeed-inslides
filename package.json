@@ -3,6 +3,9 @@
   "version": "1.0.1",
   "description": "PageSpeed InSlides Mobile Site Performance Tool",
   "main": "index.js",
+  "engines": {
+    "node": "6.9.1"
+  },
   "scripts": {
     "lint": "eslint . --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
