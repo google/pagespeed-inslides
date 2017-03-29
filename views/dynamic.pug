@@ -28,6 +28,13 @@ block slides
         h2 #{t('screenshot')}
       article.flexbox.vcenter.screenshot(style='background-image: url(data:' + insights.screenshot.mimeType + ';base64,' + insights.screenshot.data + '); background-repeat: no-repeat; background-size: contain; background-position: center;')
       footer.source.black !{t('source', {link: link, interpolation: {escapeValue: false}})}
+  if insights.mobileFriendly && insights.mobileFriendly.testStatus.status === 'COMPLETE' && insights.mobileFriendly.mobileFriendliness === 'MOBILE_FRIENDLY'
+    slide.title-slide.segue.fill.nobackground(style='background-image: url(data:;base64,' + encoded[Object.keys(encoded)[(Math.floor(Math.random() * 11))]] + ')')
+      aside.gdbar
+        img(src='data:image/svg+xml;base64,' + encoded[__dirname + '/public/images/google.svg'])
+      hgroup(style='background:black; opacity:0.75; width:100%; padding:.5em 1em;')
+        h1 #{t('mobileFriendly')}
+        h2 #{t('easyToUseOnMobile')}
   slide
     hgroup
       h2 #{t('requestStatistics')}
@@ -102,7 +109,7 @@ block slides
           },
           enableInteractivity: false,
           fontSize: 8,
-          fontName: 'HelveticaNeue-Light',
+          fontName: 'Helvetica',
           height: 50
         };
         for (const groupName in barCharts) {

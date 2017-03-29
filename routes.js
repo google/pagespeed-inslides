@@ -56,18 +56,19 @@ const routes = {
 
   getPageSpeedSlides(req, res) {
     const query = req.query;
-    let insights;
     return pageSpeedInsights.run(query)
     .then(pageSpeedInsights.format)
     .then(pageSpeedInsights.determineResourceTypes)
     .then(pageSpeedInsights.beautifyResources)
     .then(pageSpeedInsights.getWaterfall)
-    .then((insights_) => {
-      insights = insights_;
-      return mobileFriendlyTest.run(query);
+    .then((insights) => {
+      return mobileFriendlyTest.run(query)
+      .then((mobileFriendlyResults) => {
+        insights.mobileFriendly = mobileFriendlyResults;
+        return insights;
+      });
     })
-    .then((mobileFriendlyResults) => {
-      insights.mobileFriendly = mobileFriendlyResults;
+    .then((insights) => {
       res.render('dynamic', {
         insights: insights,
         filesize: filesize,

@@ -22,7 +22,6 @@ const mobileFriendlyTest = {
           requestScreenshot: params.requestScreenshot || false,
         },
       };
-      console.log(options);
       request.post(options, (err, response, data) => {
         if (err || response.statusCode !== 200) {
           return reject(Error(err || `Status code ${response.statusCode}\n

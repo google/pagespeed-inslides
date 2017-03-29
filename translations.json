@@ -1,39 +1,30 @@
 {
   "ar": {
-    "translation": {
-    }
+    "translation": {}
   },
   "bg": {
-    "translation": {
-    }
+    "translation": {}
   },
   "ca": {
-    "translation": {
-    }
+    "translation": {}
   },
   "zh-TW": {
-    "translation": {
-    }
+    "translation": {}
   },
   "zh-CN": {
-    "translation": {
-    }
+    "translation": {}
   },
   "hr": {
-    "translation": {
-    }
+    "translation": {}
   },
   "cs": {
-    "translation": {
-    }
+    "translation": {}
   },
   "da": {
-    "translation": {
-    }
+    "translation": {}
   },
   "nl": {
-    "translation": {
-    }
+    "translation": {}
   },
   "en": {
     "translation": {
@@ -60,7 +51,9 @@
       "usability": "Usability",
       "thankYou": "Thank you!",
       "navigationHelp": "Slide Navigation: ⬅️ ➡️",
-      "waterfallDiagram": "Waterfall Diagram"
+      "waterfallDiagram": "Waterfall Diagram",
+      "mobileFriendly": "Mobile-Friendlyness",
+      "easyToUseOnMobile": "This page is easy to use on a mobile device"
     }
   },
   "en-AU": {
@@ -88,24 +81,22 @@
       "usability": "How good can me nan use it?",
       "thankYou": "Cheers mate",
       "navigationHelp": "Slide surfin’: ⬅️ ➡️",
-      "waterfallDiagram": "Waterfall Crap"
+      "waterfallDiagram": "Waterfall Crap",
+      "mobileFriendly": "Mobile-Mateness",
+      "easyToUseOnMobile": "This page is easy peasy to use on a mobile device"
     }
   },
   "en-GB": {
-    "translation": {
-    }
+    "translation": {}
   },
   "fil": {
-    "translation": {
-    }
+    "translation": {}
   },
   "fi": {
-    "translation": {
-    }
+    "translation": {}
   },
   "fr": {
-    "translation": {
-    }
+    "translation": {}
   },
   "de": {
     "translation": {
@@ -132,28 +123,25 @@
       "usability": "Benutzerfreundlichkeit",
       "thankYou": "Vielen Dank!",
       "navigationHelp": "Navigation in den Folien: ⬅️ ➡️",
-      "waterfallDiagram": "Wasserfalldiagramm"
+      "waterfallDiagram": "Wasserfalldiagramm",
+      "mobileFriendly": "Optimierung für Mobilgeräte",
+      "easyToUseOnMobile": "Die Seite ist für Mobilgeräte optimiert"
     }
   },
   "el": {
-    "translation": {
-    }
+    "translation": {}
   },
   "iw": {
-    "translation": {
-    }
+    "translation": {}
   },
   "hi": {
-    "translation": {
-    }
+    "translation": {}
   },
   "hu": {
-    "translation": {
-    }
+    "translation": {}
   },
   "id": {
-    "translation": {
-    }
+    "translation": {}
   },
   "it": {
     "translation": {
@@ -180,32 +168,28 @@
       "usability": "Usabilità",
       "thankYou": "Grazie mille!",
       "navigationHelp": "Navigazione nelle diapositive: ⬅️ ➡️",
-      "waterfallDiagram": "Diagramma waterfall"
-  }
+      "waterfallDiagram": "Diagramma waterfall",
+      "mobileFriendly": "Ottimizzazione mobile",
+      "easyToUseOnMobile": "La pagina è ottimizzata per dispositivi mobili"
+    }
   },
   "ja": {
-    "translation": {
-    }
+    "translation": {}
   },
   "ko": {
-    "translation": {
-    }
+    "translation": {}
   },
   "lv": {
-    "translation": {
-    }
+    "translation": {}
   },
   "lt": {
-    "translation": {
-    }
+    "translation": {}
   },
   "no": {
-    "translation": {
-    }
+    "translation": {}
   },
   "pl": {
-    "translation": {
-    }
+    "translation": {}
   },
   "pt-BR": {
     "translation": {
@@ -232,7 +216,9 @@
       "usability": "Usabilidade",
       "thankYou": "Obrigado!",
       "navigationHelp": "Navegação nos slides: ⬅️ ➡️",
-      "waterfallDiagram": "Diagramme waterfall"
+      "waterfallDiagram": "Diagramme waterfall",
+      "mobileFriendly": "Compatibilidade com dispositivos móveis",
+      "easyToUseOnMobile": "A página é otimizada para celular"
     }
   },
   "pt-PT": {
@@ -260,28 +246,25 @@
       "usability": "Usabilidade",
       "thankYou": "Obrigado!",
       "navigationHelp": "Navegação nos slides: ⬅️ ➡️",
-      "waterfallDiagram": "Diagrama waterfall"
+      "waterfallDiagram": "Diagrama waterfall",
+      "mobileFriendly": "Compatibilidade com dispositivos móveis",
+      "easyToUseOnMobile": "A página é otimizada para celular"
     }
   },
   "ro": {
-    "translation": {
-    }
+    "translation": {}
   },
   "ru": {
-    "translation": {
-    }
+    "translation": {}
   },
   "sr": {
-    "translation": {
-    }
+    "translation": {}
   },
   "sk": {
-    "translation": {
-    }
+    "translation": {}
   },
   "sl": {
-    "translation": {
-    }
+    "translation": {}
   },
   "es": {
     "translation": {
@@ -308,27 +291,24 @@
       "usability": "Usabilidad",
       "thankYou": "¡Muchas gracias!",
       "navigationHelp": "Navegación en las diapositivas: ⬅️ ➡️",
-      "waterfallDiagram": "Diagrama waterfall"
+      "waterfallDiagram": "Diagrama waterfall",
+      "mobileFriendly": "Optimización para móviles",
+      "easyToUseOnMobile": "La página está optimizada para móviles"
     }
   },
   "sv": {
-    "translation": {
-    }
+    "translation": {}
   },
   "th": {
-    "translation": {
-    }
+    "translation": {}
   },
   "tr": {
-    "translation": {
-    }
+    "translation": {}
   },
   "uk": {
-    "translation": {
-    }
+    "translation": {}
   },
   "vi": {
-    "translation": {
-    }
+    "translation": {}
   }
 }
