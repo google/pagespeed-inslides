@@ -24,8 +24,14 @@ const mobileFriendlyTest = {
       };
       request.post(options, (err, response, data) => {
         if (err || response.statusCode !== 200) {
-          return reject(Error(err || `Status code ${response.statusCode}\n
-              ${JSON.stringify(data, null, 2)}`.replace(/\n\s+/, '\n')));
+          console.error(err || `Status code ${response.statusCode}\n
+              ${JSON.stringify(data, null, 2)}`.replace(/\n\s+/, '\n'));
+          // Mobile-friendliness results are non-critical, just fail silently
+          return resolve({
+            testStatus: {
+              status: err || `Status code ${response.statusCode}`
+            }
+          });
         }
         if (data.testStatus.status !== 'COMPLETE') {
           return reject(Error(data.testStatus.status));

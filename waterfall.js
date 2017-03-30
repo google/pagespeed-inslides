@@ -226,9 +226,9 @@ const waterfall = {
         });
       });
     })
-    .catch((e) => {
-      if (e) {
-        console.log(e);
+    .catch((error) => {
+      if (error) {
+        console.error(error);
       }
     });
   },

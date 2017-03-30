@@ -56,19 +56,17 @@ const routes = {
 
   getPageSpeedSlides(req, res) {
     const query = req.query;
-    return pageSpeedInsights.run(query)
-    .then(pageSpeedInsights.format)
-    .then(pageSpeedInsights.determineResourceTypes)
-    .then(pageSpeedInsights.beautifyResources)
-    .then(pageSpeedInsights.getWaterfall)
-    .then((insights) => {
-      return mobileFriendlyTest.run(query)
-      .then((mobileFriendlyResults) => {
-        insights.mobileFriendly = mobileFriendlyResults;
-        return insights;
-      });
-    })
-    .then((insights) => {
+    return Promise.all([
+      pageSpeedInsights.run(query)
+      .then(pageSpeedInsights.format)
+      .then(pageSpeedInsights.determineResourceTypes)
+      .then(pageSpeedInsights.beautifyResources)
+      .then(pageSpeedInsights.getWaterfall),
+      mobileFriendlyTest.run(query),
+    ])
+    .then((results) => {
+      let insights = results[0];
+      insights.mobileFriendly = results[1];
       res.render('dynamic', {
         insights: insights,
         filesize: filesize,
@@ -167,7 +165,7 @@ const routes = {
         console.log('Deleting ' + fileName);
         fs.unlink(fileName);
         if (err) {
-          console.log(err);
+          console.error(err);
           return res.status(err.status).end();
         }
       });

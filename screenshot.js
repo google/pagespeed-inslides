@@ -35,7 +35,7 @@ const screenshot = {
       console.log('Creating page');
       page = page_;
       page.on('onError', (msg) => {
-        console.log('onError', msg);
+        console.error('onError', msg);
       });
       page.on('onLoadFinished', (msg) => {
         console.log('onLoadFinished', msg);
@@ -153,7 +153,7 @@ const screenshot = {
       page.close();
       return Promise.resolve(fileName);
     }).catch((err) => {
-      console.log(err);
+      console.error(err);
     });
   },
 };

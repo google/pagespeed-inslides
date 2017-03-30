@@ -65,5 +65,5 @@ base64.encodeAssets()
   });
 })
 .catch((err) => {
-  console.log(err.stack);
+  console.error(err.stack);
 });
