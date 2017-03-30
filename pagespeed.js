@@ -9,7 +9,7 @@ const randomUserAgent = require('random-fake-useragent');
 const request = require('request');
 const waterfall = require('./waterfall.js');
 const env = require('node-env-file');
-env(path.join(__dirname, '.env'));
+env(path.join(__dirname, '.env'), {raise: false});
 
 const API_KEY = process.env.API_KEY;
 const USER_AGENT = randomUserAgent.getRandom('Chrome');

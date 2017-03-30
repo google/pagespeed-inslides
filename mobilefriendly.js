@@ -3,7 +3,7 @@
 const path = require('path');
 const request = require('request');
 const env = require('node-env-file');
-env(path.join(__dirname, '.env'));
+env(path.join(__dirname, '.env'), {raise: false});
 
 const API_KEY = process.env.API_KEY;
 
@@ -29,8 +29,8 @@ const mobileFriendlyTest = {
           // Mobile-friendliness results are non-critical, just fail silently
           return resolve({
             testStatus: {
-              status: err || `Status code ${response.statusCode}`
-            }
+              status: err || `Status code ${response.statusCode}`,
+            },
           });
         }
         if (data.testStatus.status !== 'COMPLETE') {
