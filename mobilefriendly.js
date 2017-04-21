@@ -16,7 +16,7 @@ const mobileFriendlyTest = {
       const options = {
         url: MOBILE_FRIENDLY_TEST_URL,
         json: true,
-        timeout: 30000,
+        timeout: 60000,
         form: {
           url: params.url,
           requestScreenshot: params.requestScreenshot || false,

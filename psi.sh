@@ -1,10 +1,44 @@
 #!/bin/bash
 if [ $# -eq 0 ]
 then
-  echo "Usage (single URL): psi http://example.com/"
-  echo "Usage (multiple URLs): psi http://example.com/1 http://example.com/2 http://example.com/3"
+  echo "usage: psi
+    -u,--urls                           http://example.org OR http://example.org/1 http://example.org/2 ...
+    [-s,--strategy                      mobile OR desktop]
+    [-ss,--screenshot                   true OR false]
+    [-f,--filter-third-party-resources  true OR false]
+    [-l,--locale                        en OR any of https://developers.google.com/speed/docs/insights/languages]"
   exit 1
 fi
+
+#
+# while [[ $# -gt 1 ]]
+# do
+# key="$1"
+#
+# case $key in
+#     -e|--extension)
+#     EXTENSION="$2"
+#     shift # past argument
+#     ;;
+#     -s|--searchpath)
+#     SEARCHPATH="$2"
+#     shift # past argument
+#     ;;
+#     -l|--lib)
+#     LIBPATH="$2"
+#     shift # past argument
+#     ;;
+#     --default)
+#     DEFAULT=YES
+#     ;;
+#     *)
+#             # unknown option
+#     ;;
+# esac
+# shift # past argument or value
+# done
+#
+#
 
 function slugify()
 {
@@ -26,7 +60,7 @@ do
     echo "Processing URL ${url}"
     slug=$(slugify $url)
     timestamp=`date +%Y-%m-%d—%H-%M-%S`
-    curl "https://pagespeed-inslides.herokuapp.com/pagespeed/slides?strategy=mobile&screenshot=true&filterThirdPartyResources=false&locale=en&url=${url}" > "${resultsDir}/PageSpeed-InSlides-Results—${timestamp}—${slug}.html"
+    curl "http://localhost:3000/pagespeed/slides?strategy=mobile&screenshot=true&filterThirdPartyResources=false&locale=en&url=${url}" > "${resultsDir}/PageSpeed-InSlides-Results—mobile—${timestamp}—${slug}.html"
   else
     echo "Invalid URL ${url}"
   fi
