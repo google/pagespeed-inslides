@@ -25,7 +25,7 @@
     "filesize": "^3.5.6",
     "helmet": "^3.5.0",
     "html2jade": "^0.8.6",
-    "html5-slides": "^1.1.6",
+    "html5-slides": "^1.1.7",
     "i18next": "^7.1.2",
     "i18next-express-middleware": "^1.0.3",
     "intl": "^1.2.5",
