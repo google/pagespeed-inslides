@@ -29,13 +29,17 @@ html
               label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='strategyDesktop')
                 input#strategyDesktop.mdl-radio__button(name='strategy', type='radio', value='desktop')
                 span.mdl-radio__label Desktop Site
+            p#mobileFriendlyParagraph
+              label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for='mobileFriendlyTest')
+                input#mobileFriendlyTest.mdl-checkbox__input(name='mobileFriendlyTest', type='checkbox', checked=false, value='true')
+                span.mdl-checkbox__label Run a Mobile-Friendly Test
           div
             label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for='screenshot')
-              input#screenshot.mdl-checkbox__input(name='screenshot', value='true', type='checkbox', checked)
+              input#screenshot.mdl-checkbox__input(name='screenshot', type='checkbox', checked, value='true')
               span.mdl-checkbox__label Include a Screenshot
           div
             label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for='filterThirdPartyResources')
-              input#filterThirdPartyResources.mdl-checkbox__input(name='filterThirdPartyResources', value='true', type='checkbox')
+              input#filterThirdPartyResources.mdl-checkbox__input(name='filterThirdPartyResources', type='checkbox', checked=false, value='true')
               span.mdl-checkbox__label Filter 3<sup>rd</sup>-Party Resources&nbsp;
                 small (e.g., most tracking pixels)
           div
@@ -92,6 +96,20 @@ html
       const downloadButton = document.querySelector('#downloadButton');
       const urlInput = document.querySelector('#url');
       const formElement = document.querySelector('#form');
+      const mobileSiteRadio = document.querySelector('#strategyMobile');
+      const desktopSiteRadio = document.querySelector('#strategyDesktop');
+      const mobileFriendlyParagraph = document.querySelector('#mobileFriendlyParagraph');
+
+      const strategyChanged = () => {
+        if (mobileSiteRadio.checked) {
+          mobileFriendlyParagraph.style.visibility = 'visible';
+        } else {
+          mobileFriendlyParagraph.style.visibility = 'hidden';
+        }
+      };
+      mobileSiteRadio.addEventListener('change', strategyChanged);
+      desktopSiteRadio.addEventListener('change', strategyChanged);
+      strategyChanged();
 
       viewButton.addEventListener('click', () => {
         if (!formElement.checkValidity()) {

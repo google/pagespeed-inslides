@@ -96,7 +96,34 @@
     "translation": {}
   },
   "fr": {
-    "translation": {}
+    "translation": {
+      "appTitle": "🔥 PageSpeed InSlides",
+      "presentationTitle": "Résultats PageSpeed InSlides",
+      "screenshot": "Capture d’écran",
+      "source": "Source: {{link}}",
+      "requestStatistics": "Statistiques de requête",
+      "requestStatisticsNarrative": "La page contient <em>{{numberResources}} ressources</em> de <em>{{numberHosts}} hôtes uniques</em> pesant à <em>{{totalRequestBytes}}</em> de demande au total.",
+      "responseStatistics": "Statistiques de réponse",
+      "responseStatisticsNarrative": "La taille du téléchargement pour toutes les ressources de la page était de <em>{{totalSize}}</em>.",
+      "other": "Autres",
+      "htmlResponseBytes": "HTML",
+      "textResponseBytes": "Texte",
+      "cssResponseBytes": "Cascading Style Sheets",
+      "imageResponseBytes": "Images",
+      "javascriptResponseBytes": "JavaScript",
+      "flashResponseBytes": "Flash",
+      "otherResponseBytes": "Autres",
+      "numberStaticResources": "Contenu statique",
+      "numberJsResources": "JavaScript",
+      "numberCssResources": "Cascading Style Sheets",
+      "speed": "Vitesse",
+      "usability": "Facilité d’utilisation",
+      "thankYou": "Merci beacoup!",
+      "navigationHelp": "Navigation dans les slides&#8201;: ⬅️ ➡️",
+      "waterfallDiagram": "Diagramme de cascade",
+      "mobileFriendly": "Test d’optimisation mobile",
+      "easyToUseOnMobile": "Cette page est facile à utiliser sur un appareil mobile"
+    }
   },
   "de": {
     "translation": {
@@ -107,7 +134,7 @@
       "requestStatistics": "Request-Statistiken",
       "requestStatisticsNarrative": "Die Seite enthält <em>{{numberResources}} Ressourcen</em> von <em>{{numberHosts}} eindeutigen Hosts</em>, resultierend in <em>{{totalRequestBytes}} insgesamt</em>.",
       "responseStatistics": "Response-Statistiken",
-      "responseStatisticsNarrative": "Der insgesamte Download-Umfang der Seite ist <em>{{totalSize}}</em>.",
+      "responseStatisticsNarrative": "Der insgesamte Download-Umfang der Seite beträgt <em>{{totalSize}}</em>.",
       "other": "Sonstiges",
       "htmlResponseBytes": "HTML",
       "textResponseBytes": "Text",

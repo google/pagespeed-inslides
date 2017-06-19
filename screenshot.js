@@ -149,8 +149,7 @@ const screenshot = {
     })
     .then(() => {
       console.log('Exiting');
-      instance.exit();
-      page.close();
+      page.close().then(() => instance.exit());
       return Promise.resolve(fileName);
     }).catch((err) => {
       console.error(err);

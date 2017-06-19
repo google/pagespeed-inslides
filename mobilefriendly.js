@@ -10,6 +10,9 @@ const API_KEY = process.env.API_KEY;
 const mobileFriendlyTest = {
   run(params) {
     return new Promise((resolve, reject) => {
+      if (!params.mobileFriendlyTest || params.mobileFriendlyTest !== 'true') {
+        return resolve(false);
+      }
       const MOBILE_FRIENDLY_TEST_URL = `
           https://searchconsole.googleapis.com/v1/urlTestingTools/
           mobileFriendlyTest:run?key=${API_KEY}`.replace(/\n\s*/g, '');

@@ -151,7 +151,7 @@ const waterfall = {
     })
     .then((status) => {
       if (status !== 'success') {
-        instance.exit();
+        page.close().then(() => instance.exit());
         return Promise.reject(status);
       }
       onLoadTime = new Date();
@@ -210,9 +210,8 @@ const waterfall = {
         return Promise.reject(svg);
       }
       svg = svg.replace(/svg:svg/g, 'svg');
-      page.close();
-      instance.exit();
       return new Promise((resolve, reject) => {
+        page.close().then(() => instance.exit());
         const filePath = path.join(__dirname, 'node_modules', 'perf-cascade',
             'dist', 'perf-cascade.css');
         fs.readFile(filePath, 'utf8', (err, data) => {
@@ -227,6 +226,7 @@ const waterfall = {
       });
     })
     .catch((error) => {
+      page.close().then(() => instance.exit());
       if (error) {
         console.error(error);
       }

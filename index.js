@@ -47,15 +47,15 @@ base64.encodeAssets()
   app.set('views', path.join(__dirname, 'views'));
 
   // Setup static routes
-  app.use('/pagespeed/', express.static(path.join(__dirname, 'public')));
+  app.use('/', express.static(path.join(__dirname, 'public')));
 
   // Setup dynamic routes
-  app.get('/pagespeed/', routes.getIndex);
-  app.get('/pagespeed/raw', routes.getPageSpeedRaw);
-  app.get('/pagespeed/processed', routes.getPageSpeedProcessed);
-  app.get('/pagespeed/report', routes.getPageSpeedReport);
-  app.get('/pagespeed/slides', routes.getPageSpeedSlides);
-  app.get('/pagespeed/screenshot', routes.getScreenshot);
+  app.get('/', routes.getIndex);
+  app.get('/raw', routes.getPageSpeedRaw);
+  app.get('/processed', routes.getPageSpeedProcessed);
+  app.get('/report', routes.getPageSpeedReport);
+  app.get('/slides', routes.getPageSpeedSlides);
+  app.get('/screenshot', routes.getScreenshot);
 
   // Start server
   const server = app.listen(process.env.PORT || 3000, function() {

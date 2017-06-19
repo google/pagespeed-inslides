@@ -33,7 +33,7 @@ const slides = {
         html = html.replace(/(<script.*?>)([\s\S]+?)(<\/script>)/gm,
             (_ignore1, scriptOpen, code, scriptClose) => {
               return `${scriptOpen}
-                  ${UglifyJS.minify(code, {fromString: true}).code}
+                  ${UglifyJS.minify(code).code}
                   ${scriptClose}`.replace(/(?:\n\s+)/g, '');
             });
         html2jade.convertHtml(html, {}, (err, jade) => {

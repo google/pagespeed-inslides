@@ -35,10 +35,10 @@ const pageSpeedInsights = {
           https://www.googleapis.com/pagespeedonline/v2/runPagespeed
           ?url=${encodeURIComponent(params.url)}
           &filter_third_party_resources=${
-              params.filterThirdPartyResources || false}
+              params.filterThirdPartyResources || 'false'}
           &locale=${locale.replace('-', '_')}
           ${params.rule ? '&rule=' + params.rule : ''}
-          &screenshot=${params.screenshot || false}
+          &screenshot=${params.screenshot || 'false'}
           ${params.strategy ? '&strategy=' + params.strategy : ''}
           &key=${API_KEY}`.replace(/\n\s*/g, '');
       console.log(PAGESPEEDS_INSIGHTS_URL);
