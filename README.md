@@ -13,7 +13,7 @@ front-end engineers and webmasters, this is not meant as an introductory pitch d
 
 **🔥 Demo:**
 
-Navigate to [https://pagespeed-inslides.firebaseapp.com/](https://pagespeed-inslides.firebaseapp.com/#1),
+Navigate to this [demo deck](https://pagespeed-inslides.firebaseapp.com/blog-google.html),
 then navigate in the slides with the arrow keys ⬅️ ➡️).
 Please note that this demo is not generated live, but an archived older version.
 
