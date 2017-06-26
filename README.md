@@ -1,5 +1,7 @@
 # PageSpeed InSlides
+
 **✏️ Description:**
+
 The *PageSpeed InSlides* tool, which—as the name suggests
 (not a typo, think "PageSpeed, but in slides") —lifts the output from the
 [PageSpeed Insights API](https://developers.google.com/speed/docs/insights/v2/reference/pagespeedapi/runpagespeed)
@@ -10,11 +12,22 @@ front-end engineers and webmasters, this is not meant as an introductory pitch d
 *Please note: this is not an official Google product.*
 
 **🔥 Demo:**
+
 Navigate to [https://pagespeed-inslides.firebaseapp.com/](https://pagespeed-inslides.firebaseapp.com/#1),
 then navigate in the slides with the arrow keys ⬅️ ➡️).
 Please note that this demo is not generated live, but an archived older version.
 
+**⚙️ Setup:**
+
+Get an API key and activate the necessary APIs in the Google Developer Console:
+
+* PageSpeed Insights API ([instructions](https://developers.google.com/speed/docs/insights/v2/first-app#APIKey))
+* URL Testing Tools API ([instructions](https://developers.google.com/webmaster-tools/search-console-api/v1/configure))
+
+Then rename the ```dot_env``` file in the repository to ```.env``` and paste the API key in.
+
 **🔨 Usage:**
+
 Open the form at [localhost:3000/](http://localhost:3000) and simply enter a URL,
 optionally change any of the other fields.
 
@@ -29,9 +42,11 @@ Just replace the highlighted parts as explained below:
 *   &mobileFriendlyTest=false → Whether or not to run a [mobile-friendly test](https://developers.google.com/webmaster-tools/search-console-api/), either "true" or "false".
 
 **📧 Contact:**
+
 Thomas Steiner ([tomac@google.com](mailto:tomac@google.com))
 
 **📄 License:**
+
 ```plaintext
 Copyright 2017 Google
 
