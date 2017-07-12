@@ -1,10 +1,11 @@
 {
   "name": "pagespeed-inslides",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "PageSpeed InSlides Mobile Site Performance Tool",
   "main": "index.js",
   "engines": {
-    "node": "6.9.1"
+    "node": ">=4.8.x",
+    "npm": ">=2.15.x"
   },
   "scripts": {
     "lint": "eslint . --fix && stylelint \"**/*.css\"",
@@ -20,29 +21,29 @@
   "author": "Thomas Steiner (tomac@google.com)",
   "license": "Apache-2.0",
   "dependencies": {
-    "compression": "^1.6.2",
+    "compression": "^1.7.0",
     "express": "^4.15.3",
     "filesize": "^3.5.10",
     "helmet": "^3.6.1",
     "html2jade": "^0.8.6",
-    "html5-slides": "^1.1.7",
-    "i18next": "^8.4.2",
+    "html5-slides": "^1.1.8",
+    "i18next": "^8.4.3",
     "i18next-express-middleware": "^1.0.5",
     "intl": "^1.2.5",
     "js-beautify": "^1.6.14",
     "node-env-file": "^0.1.8",
-    "perf-cascade": "^2.1.0",
+    "perf-cascade": "^2.1.1",
     "phantom": "^4.0.4",
     "prismjs": "^1.6.0",
     "pug": "^2.0.0-rc.2",
     "random-fake-useragent": "^0.1.0",
     "request": "^2.81.0",
-    "uglify-js": "^3.0.18"
+    "uglify-js": "^3.0.24"
   },
   "devDependencies": {
-    "eslint": "^4.0.0",
-    "eslint-config-google": "^0.8.0",
-    "stylelint": "^7.11.1",
+    "eslint": "^4.2.0",
+    "eslint-config-google": "^0.9.1",
+    "stylelint": "^7.13.0",
     "stylelint-csstree-validator": "^1.1.1"
   },
   "eslintConfig": {
