@@ -5,7 +5,7 @@ block variables
   - const title = `${t('presentationTitle').replace(/"/g, '&quot;')}`;
   - const subtitle = `<img src='http://www.google.com/s2/favicons?domain_url=${encodeURIComponent(insights.finalUrl)}'> ${insights.title.replace(/"/g, '&quot;')}`;
   - const date = new Intl.DateTimeFormat(language, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}).format(new Date());
-  - const navigationHelp = `${t('navigationHelp').replace(/"/g, '&quot;')}`;
+  - const navigationHelp = `${t('navigationHelp').replace(/"/g, '&quot;')} — ${t('instructions').replace('LINK', 'https://drive.google.com/corp/drive/folders/0B-mZyN2zQedaYjNLOG5kWWw4ZDA')}`;
 block slides
   style
     include style.css
@@ -352,6 +352,9 @@ block slides
     // Current user JSONP callback
     function _showCurrentUser(currentUser) {
       if (currentUser.status !== 'Success') {
+        for (const userDisplayName of document.querySelectorAll('.user-display-name')) {
+          userDisplayName.innerHTML = `#{date} — !{navigationHelp}`;
+        }
         return;
       }
       const email = currentUser.message.replace(/.*?id (\w+@google.com).*?/g, '$1');
@@ -359,7 +362,7 @@ block slides
       const displayName = profile.displayName;
       const profileImage = profile.image.url;
       for (const userDisplayName of document.querySelectorAll('.user-display-name')) {
-        userDisplayName.textContent = `${displayName} (${email}) — #{date} — #{navigationHelp}`;
+        userDisplayName.innerHTML = `${displayName} (${email}) — #{date} — !{navigationHelp}`;
       }
       for (const userProfileImage of document.querySelectorAll('.user-profile-image')) {
         userProfileImage.src = profileImage;

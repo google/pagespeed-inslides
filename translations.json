@@ -53,7 +53,8 @@
       "navigationHelp": "Slide Navigation: ⬅️ ➡️",
       "waterfallDiagram": "Waterfall Diagram",
       "mobileFriendly": "Mobile-Friendlyness",
-      "easyToUseOnMobile": "This page is easy to use on a mobile device"
+      "easyToUseOnMobile": "This page is easy to use on a mobile device",
+      "instructions": "<a class='instructions' href='LINK'>ℹ️ Instructions</a>"
     }
   },
   "en-AU": {
@@ -83,7 +84,8 @@
       "navigationHelp": "Slide surfin’: ⬅️ ➡️",
       "waterfallDiagram": "Waterfall Crap",
       "mobileFriendly": "Mobile-Mateness",
-      "easyToUseOnMobile": "This page is easy peasy to use on a mobile device"
+      "easyToUseOnMobile": "This page is easy peasy to use on a mobile device",
+      "instructions": "<a class='instructions' href='LINK'>ℹ️ How to use this crap</a>"
     }
   },
   "en-GB": {
@@ -122,7 +124,8 @@
       "navigationHelp": "Navigation dans les slides&#8201;: ⬅️ ➡️",
       "waterfallDiagram": "Diagramme de cascade",
       "mobileFriendly": "Test d’optimisation mobile",
-      "easyToUseOnMobile": "Cette page est facile à utiliser sur un appareil mobile"
+      "easyToUseOnMobile": "Cette page est facile à utiliser sur un appareil mobile",
+      "instructions": "<a class='instructions' href='LINK'>ℹ️ Instructions</a>"
     }
   },
   "de": {
@@ -152,7 +155,8 @@
       "navigationHelp": "Navigation in den Folien: ⬅️ ➡️",
       "waterfallDiagram": "Wasserfalldiagramm",
       "mobileFriendly": "Optimierung für Mobilgeräte",
-      "easyToUseOnMobile": "Die Seite ist für Mobilgeräte optimiert"
+      "easyToUseOnMobile": "Die Seite ist für Mobilgeräte optimiert",
+      "instructions": "<a class='instructions' href='LINK'>ℹ️ Hilfe</a>"
     }
   },
   "el": {
@@ -197,7 +201,8 @@
       "navigationHelp": "Navigazione nelle diapositive: ⬅️ ➡️",
       "waterfallDiagram": "Diagramma waterfall",
       "mobileFriendly": "Ottimizzazione mobile",
-      "easyToUseOnMobile": "La pagina è ottimizzata per dispositivi mobili"
+      "easyToUseOnMobile": "La pagina è ottimizzata per dispositivi mobili",
+      "instructions": "<a class='instructions' href='LINK'>ℹ️ Istruzioni</a>"
     }
   },
   "ja": {
@@ -245,7 +250,8 @@
       "navigationHelp": "Navegação nos slides: ⬅️ ➡️",
       "waterfallDiagram": "Diagramme waterfall",
       "mobileFriendly": "Compatibilidade com dispositivos móveis",
-      "easyToUseOnMobile": "A página é otimizada para celular"
+      "easyToUseOnMobile": "A página é otimizada para celular",
+      "instructions": "<a class='instructions' href='LINK'>ℹ️ Istruzioni</a>"
     }
   },
   "pt-PT": {
@@ -275,7 +281,8 @@
       "navigationHelp": "Navegação nos slides: ⬅️ ➡️",
       "waterfallDiagram": "Diagrama waterfall",
       "mobileFriendly": "Compatibilidade com dispositivos móveis",
-      "easyToUseOnMobile": "A página é otimizada para celular"
+      "easyToUseOnMobile": "A página é otimizada para celular",
+      "instructions": "<a class='instructions' href='LINK'>ℹ️ Manual de instruções</a>"
     }
   },
   "ro": {
@@ -320,7 +327,8 @@
       "navigationHelp": "Navegación en las diapositivas: ⬅️ ➡️",
       "waterfallDiagram": "Diagrama waterfall",
       "mobileFriendly": "Optimización para móviles",
-      "easyToUseOnMobile": "La página está optimizada para móviles"
+      "easyToUseOnMobile": "La página está optimizada para móviles",
+      "instructions": "<a class='instructions' href='LINK'>ℹ️ Instrucciones</a>"
     }
   },
   "sv": {

@@ -13,6 +13,11 @@ slides > slide {
   margin-top: calc(95vw / (900 / 700) / -2);
 }
 
+a.instructions:hover {
+  text-decoration: underline;
+  color: rgb(121, 121, 121) !important;
+}
+
 summary {
   outline: none;
 }
