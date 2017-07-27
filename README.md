@@ -11,9 +11,29 @@ front-end engineers and webmasters, this is not meant as an introductory pitch d
 
 *Please note: this is not an official Google product.*
 
+** 🖥 Screenshots
+
+Input form with various options:
+
+![Input Form](https://github.com/google/pagespeed-inslides/blob/master/docs/0.png)
+
+Slide examples:
+
+![Title Slide](https://github.com/google/pagespeed-inslides/blob/master/docs/1.png)
+
+![Screenshoy Slide](https://github.com/google/pagespeed-inslides/blob/master/docs/2.png)
+
+![Waterfall Diagram Slide](https://github.com/google/pagespeed-inslides/blob/master/docs/3.png)
+
+![Optimization Slide](https://github.com/google/pagespeed-inslides/blob/master/docs/4.png)
+
+** 📚 Instruction Manual
+
+The features of the PageSpeed InSlides tool are described in the [manual](https://github.com/google/pagespeed-inslides/blob/master/docs/instructions.pdf) (PDF).
+
 **🔥 Demo:**
 
-Navigate to this [demo deck](https://pagespeed-inslides.firebaseapp.com/blog-google.html),
+Navigate to this [demo deck](https://google.github.io/pagespeed-inslides/),
 then navigate in the slides with the arrow keys ⬅️ ➡️).
 Please note that this demo is not generated live, but an archived older version.
 
