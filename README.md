@@ -11,7 +11,7 @@ front-end engineers and webmasters, this is not meant as an introductory pitch d
 
 *Please note: this is not an official Google product.*
 
-** 🖥 Screenshots
+**🖥 Screenshots
 
 Input form with various options:
 
@@ -21,15 +21,15 @@ Slide examples:
 
 ![Title Slide](https://github.com/google/pagespeed-inslides/blob/master/docs/1.png)
 
-![Screenshoy Slide](https://github.com/google/pagespeed-inslides/blob/master/docs/2.png)
+![Screenshot Slide](https://github.com/google/pagespeed-inslides/blob/master/docs/2.png)
 
 ![Waterfall Diagram Slide](https://github.com/google/pagespeed-inslides/blob/master/docs/3.png)
 
 ![Optimization Slide](https://github.com/google/pagespeed-inslides/blob/master/docs/4.png)
 
-** 📚 Instruction Manual
+**📚 Instruction Manual
 
-The features of the PageSpeed InSlides tool are described in the [manual](https://github.com/google/pagespeed-inslides/blob/master/docs/instructions.pdf) (PDF).
+The features of the PageSpeed InSlides tool are described in the [manual](https://github.com/google/pagespeed-inslides/raw/master/docs/instructions.pdf) (PDF).
 
 **🔥 Demo:**
 
