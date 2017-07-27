@@ -46,6 +46,8 @@ Get an API key and activate the necessary APIs in the Google Developer Console:
 
 Then rename the ```dot_env``` file in the repository to ```.env``` and paste the API key in.
 
+Now you are good to go and launch the tool via ```npm run start```.
+
 **🔨 Usage:**
 
 Open the form at [localhost:3000/](http://localhost:3000) and simply enter a URL,
