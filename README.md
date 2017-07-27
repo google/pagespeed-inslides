@@ -46,10 +46,21 @@ Get an API key and activate the necessary APIs in the Google Developer Console:
 
 Then rename the ```dot_env``` file in the repository to ```.env``` and paste the API key in.
 
+Now, install the package. Assuming you are within the directory `/pagespeed-inslides`
+
+```
+npm install
+```
+
 **🔨 Usage:**
 
-Open the form at [localhost:3000/](http://localhost:3000) and simply enter a URL,
-optionally change any of the other fields.
+Open the form at [localhost:3000/](http://localhost:3000) using 
+
+```
+node index.js 
+```
+
+and simply enter a URL, optionally change any of the other fields.
 
 As an alternative, the user interface is also accessible in form of a hackable URL 😎.
 Just replace the highlighted parts as explained below:
