@@ -8,6 +8,7 @@ The *PageSpeed InSlides* tool, which—as the name suggests
 and creates an interactive [HTML5 slide](http://tomayac.github.io/html5-slides/template.html#1)
 deck for you, on the fly. The target audience is technical, for example,
 front-end engineers and webmasters, this is not meant as an introductory pitch deck.
+Also, the decks are designed for *desktop*, to be shown in *full screen mode*, ideally on a projector.
 
 *Please note: this is not an official Google product.*
 
