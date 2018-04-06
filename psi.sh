@@ -74,7 +74,7 @@ do
     echo "Processing URL ${url}"
     slug=$(slugify $url)
     timestamp=`date +%Y-%m-%d—%H-%M-%S`
-    curl "http://localhost:3000/pagespeed/slides?strategy=mobile&screenshot=true&filterThirdPartyResources=false&locale=en&url=${url}" > "${resultsDir}/PageSpeed-InSlides-Results—mobile—${timestamp}—${slug}.html"
+    curl "http://localhost:3000/slides?strategy=desktop&screenshot=true&filterThirdPartyResources=false&locale=en&url=${url}" > "${resultsDir}/PageSpeed-InSlides-Results—desktop—${timestamp}—${slug}.html"
   else
     echo "Invalid URL ${url}"
   fi

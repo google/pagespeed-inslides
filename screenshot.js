@@ -51,7 +51,7 @@ const screenshot = {
       console.log('Creating page');
       page = page_;
       page.on('onError', (msg) => {
-        console.error('onError', msg);
+        // Silently ignore page errors
       });
       page.on('onLoadFinished', (msg) => {
         console.log('onLoadFinished', msg);

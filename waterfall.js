@@ -130,8 +130,8 @@ const waterfall = {
     .then((page_) => {
       page = page_;
 
-      page.on('onError', (msg) => {
-        return Promise.reject(msg);
+      page.on('onError', () => {
+        // Silently ignore page errors
       });
 
       page.on('onLoadStarted', () => {
