@@ -1,6 +1,6 @@
 {
   "name": "pagespeed-inslides",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "PageSpeed InSlides Mobile Site Performance Tool",
   "main": "index.js",
   "engines": {
