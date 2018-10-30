@@ -362,7 +362,8 @@ block slides
       const displayName = profile.displayName;
       const profileImage = profile.image.url;
       for (const userDisplayName of document.querySelectorAll('.user-display-name')) {
-        userDisplayName.innerHTML = `${displayName} (${email}) — #{date} — !{navigationHelp}`;
+        userDisplayName.textContent = `${displayName} (${email}) — #{date}`;
+        userDisplayName.innerHTML += ` — !{navigationHelp}`;
       }
       for (const userProfileImage of document.querySelectorAll('.user-profile-image')) {
         userProfileImage.src = profileImage;
