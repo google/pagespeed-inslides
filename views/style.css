@@ -1,8 +1,8 @@
 slides.layout-widescreen > slide {
   width: 95vw;
-  height: calc(95vw / (1100 / 700));
+  height: 100%;
   margin-left: calc(95vw / -2);
-  margin-top: calc(95vw / (1100 / 700) / -2);
+  margin: -400px;
 }
 
 slides > slide {
@@ -11,6 +11,8 @@ slides > slide {
   max-height: 95vh;
   margin-left: calc(95vw / -2);
   margin-top: calc(95vw / (900 / 700) / -2);
+  top: 420px !important;
+  left: calc(400px + 2.5%) !important;
 }
 
 a.instructions:hover {
@@ -75,6 +77,27 @@ aside.gdbar {
 .title-slide hgroup h2 {
   padding-left: .25em;
 }
+
+.title-slide hgroup {
+  margin-left: 0;
+  transition: all .5s linear;
+}
+
+@media screen and (max-height: 700px) {
+    /* STYLES HERE */
+  .title-slide hgroup {
+    margin-left: 500px;
+  }
+
+  .title-slide hgroup h1 {
+    font-size: 28pt !important;
+  }
+
+  .title-slide hgroup h2 {
+    font-size: 20pt !important;
+  }
+}
+
 
 .file-size {
   font-size: smaller;
