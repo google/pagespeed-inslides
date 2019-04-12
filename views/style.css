@@ -1,16 +1,15 @@
 slides.layout-widescreen > slide {
-  width: 95vw;
-  height: calc(95vw / (1100 / 700));
-  margin-left: calc(95vw / -2);
-  margin-top: calc(95vw / (1100 / 700) / -2);
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  margin: 20px;
 }
 
 slides > slide {
-  width: 95vw;
-  height: calc(95vw / (900/700));
-  max-height: 95vh;
-  margin-left: calc(95vw / -2);
-  margin-top: calc(95vw / (900 / 700) / -2);
+  /*require min resolution for readability*/
+  min-height: 480px;
+  min-width: 768px;
+  top: 0;
+  left: 0;
 }
 
 a.instructions:hover {
@@ -72,8 +71,36 @@ aside.gdbar {
   background-color: green;
 }
 
+.title-slide hgroup h1 {
+  transition: font-size 0.5s linear;
+}
+
 .title-slide hgroup h2 {
-  padding-left: .25em;
+  padding-left: 0.25em;
+  transition: font-size 0.5s linear;
+}
+
+.title-slide hgroup {
+  right: -30%;
+  margin-left: 0;
+  transition: right 0.5s linear, bottom 0.5s linear, height 0.5s linear;
+  box-sizing: border-box;
+}
+
+@media screen and (max-height: 700px), (max-width: 1200px) {
+  .title-slide hgroup {
+    right: 0;
+    bottom: 0;
+    height: 150px;
+  }
+
+  .title-slide hgroup h1 {
+    font-size: 28pt !important;
+  }
+
+  .title-slide hgroup h2 {
+    font-size: 20pt !important;
+  }
 }
 
 .file-size {
@@ -82,15 +109,14 @@ aside.gdbar {
 }
 
 .user-display-name {
-
 }
 
 .user-profile-image {
   width: 1.6em;
   height: auto;
-  border-radius: .8em;
+  border-radius: 0.8em;
   vertical-align: middle;
-  margin-right: .5em;
+  margin-right: 0.5em;
 }
 
 article p {
@@ -135,22 +161,40 @@ pre.prettyprint {
   overflow-x: hidden;
   overflow-y: scroll;
   background-color: transparent;
-  background-image: linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
+  background-image: linear-gradient(
+    transparent 50%,
+    rgba(69, 142, 209, 0.04) 50%
+  );
   background-size: 3em 3em;
   background-origin: content-box;
 }
 
 .font-preview {
   border: solid 1px #ccc;
-  padding: .5em;
+  padding: 0.5em;
 }
 
 .image-preview {
   width: auto;
   height: 200px;
   border: solid 1px #ccc;
-  background-color: #FEFEFE;
-  background-image: linear-gradient(45deg, #CBCBCB 25%, transparent 25%, transparent 75%, #CBCBCB 75%, #CBCBCB), linear-gradient(45deg, #CBCBCB 25%, transparent 25%, transparent 75%, #CBCBCB 75%, #CBCBCB);
+  background-color: #fefefe;
+  background-image: linear-gradient(
+      45deg,
+      #cbcbcb 25%,
+      transparent 25%,
+      transparent 75%,
+      #cbcbcb 75%,
+      #cbcbcb
+    ),
+    linear-gradient(
+      45deg,
+      #cbcbcb 25%,
+      transparent 25%,
+      transparent 75%,
+      #cbcbcb 75%,
+      #cbcbcb
+    );
   background-size: 30px 30px;
   background-position: 0 0, 15px 15px;
 }
@@ -162,7 +206,7 @@ pre.prettyprint {
 li a::before {
   content: "📄 Document";
   color: darkgray;
-  margin:.2em;
+  margin: 0.2em;
 }
 
 li a[href*='.woff']::before,
